@@ -1,0 +1,65 @@
+.gradle/
+.idea/
+build/
+logs/
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+.DS_Store
+*.bin
+*.probe
+*.lock
+build/tmp/compileJava/previous-compilation-data.bin
+.gradle/file-system.probe
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/7.6/fileHashes/resourceHashesCache.bin
+.gradle/7.6/fileHashes/fileHashes.lock
+.gradle/7.6/fileHashes/fileHashes.bin
+.gradle/7.6/executionHistory/executionHistory.lock
+.gradle/7.6/executionHistory/executionHistory.bin
+logs/spring.log.2023-02-16.0.gz
+logs/spring.log.2023-02-23.0.gz
+logs/spring.log.2023-02-27.0.gz
+logs/spring.log.2023-02-25.0.gz
+bin/main/application.properties
+.vscode/settings.json
+.DS_Store
+bin/main/application.properties
+*.gz
+*.lock
+*.bin
+.gradle/7.6/checksums/checksums.lock
+.gradle/7.6/checksums/md5-checksums.bin
+.gradle/7.6/checksums/sha1-checksums.bin
+bin/main/application.properties
+build/
+.gradle/
+bin/
+*.bin
+hoso/1250/contracts/hodongvay_1250.docx
+hoso/1249/contracts/hodongvay_1249.docx
+hoso/1248/contracts/hodongvay_1248.docx
+hoso/1247/contracts/hodongvay_1247.docx
+hoso/1246/contracts/hodongvay_1246.docx
