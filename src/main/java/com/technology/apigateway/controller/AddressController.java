@@ -52,6 +52,4 @@ public class AddressController extends BaseResponse {
     public ResponseEntity<?> getAllWard(HttpServletRequest httpServletRequest, @PathVariable int did) {
         return response(toResult(addressService.getWardByDid(did)));
     }
-
-
 }
