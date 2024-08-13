@@ -21,7 +21,6 @@ public class ReferenceServiceImpl implements ReferenceService {
     @Autowired
     ReferencesRepository referencesRepository;
 
-
     @Override
     public CustomerStatus createReference(ReferenceRequest referenceRequest) {
         CustomerStatus customerStatus;
