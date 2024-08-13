@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,11 @@ public class IncomesController extends BaseResponse {
     public ResponseEntity<?> updateIncomes(HttpServletRequest httpServletRequest,
                                              @RequestBody UpdateIncomesRequest updateReferenceRequest) {
         return response(toResult(incomesService.updateIncomes(updateReferenceRequest)));
+    }
+
+    @PostMapping("delete-incomes-by-id")
+    public ResponseEntity<?> deleteReferencesById(@RequestParam int id) {
+        return response(toResult(incomesService.deleteIncomesById(id)));
     }
 
 }
