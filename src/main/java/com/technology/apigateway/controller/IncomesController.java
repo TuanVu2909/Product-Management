@@ -1,5 +1,6 @@
 package com.technology.apigateway.controller;
 
+import com.technology.apigateway.controller.request.incomes.CreateIncomesRequest;
 import com.technology.apigateway.controller.request.incomes.UpdateIncomesRequest;
 import com.technology.apigateway.controller.request.references.UpdateReferenceRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
@@ -22,6 +23,13 @@ public class IncomesController extends BaseResponse {
 
     @Autowired
     IncomesService incomesService;
+
+    @PostMapping("create-incomes")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> createIncomes(HttpServletRequest httpServletRequest,
+                                           @RequestBody CreateIncomesRequest createIncomesRequest) {
+        return response(toResult(incomesService.createIncomes(createIncomesRequest)));
+    }
 
     @PostMapping("update-incomes")
     @Transactional(readOnly = true)
