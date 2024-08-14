@@ -2,7 +2,6 @@ package com.technology.apigateway.controller;
 
 import com.technology.apigateway.controller.request.incomes.CreateIncomesRequest;
 import com.technology.apigateway.controller.request.incomes.UpdateIncomesRequest;
-import com.technology.apigateway.controller.request.references.UpdateReferenceRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.service.IncomesService;
 import lombok.extern.log4j.Log4j2;
@@ -40,7 +39,7 @@ public class IncomesController extends BaseResponse {
     }
 
     @PostMapping("delete-incomes-by-id")
-    public ResponseEntity<?> deleteReferencesById(@RequestParam int id) {
+    public ResponseEntity<?> deleteIncomeById(@RequestParam int id) {
         return response(toResult(incomesService.deleteIncomesById(id)));
     }
 

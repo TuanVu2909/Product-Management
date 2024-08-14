@@ -1,8 +1,5 @@
 package com.technology.apigateway.controller.request;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
