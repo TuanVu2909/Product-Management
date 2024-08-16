@@ -10,21 +10,15 @@ import com.technology.apigateway.database.entity.CustomerCareStatus;
 import com.technology.apigateway.database.entity.CustomerStatus;
 import com.technology.apigateway.database.entity.ListLoanRegistration;
 import com.technology.apigateway.database.entity.LoanRegistrationStatus;
-import com.technology.apigateway.database.repository.AdminUserRepository;
-import com.technology.apigateway.database.repository.CustomerCareRepository;
 import com.technology.apigateway.database.repository.CustomerCareStatusRepository;
-import com.technology.apigateway.database.repository.CustomerRepository;
 import com.technology.apigateway.database.repository.CustomerStatusRepository;
 import com.technology.apigateway.database.repository.LoanRegistrationRepository;
 import com.technology.apigateway.database.repository.LoanRegistrationStatusRepository;
-import com.technology.apigateway.database.repository.UserFileRepository;
 import com.technology.apigateway.exception.BusinessException;
-import com.technology.apigateway.service.FilesStorageService;
 import com.technology.apigateway.service.MainService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -33,31 +27,13 @@ import java.util.List;
 public class MainServiceImpl implements MainService {
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
     CustomerStatusRepository customerStatusRepository;
 
     @Autowired
     CustomerCareStatusRepository customerCareStatusRepository;
 
     @Autowired
-    CustomerCareRepository customerCareRepository;
-
-    @Autowired
     LoanRegistrationStatusRepository loanRegistrationStatusRepository;
-
-    @Autowired
-    CustomerRepository customerRepository;
-
-    @Autowired
-    AdminUserRepository adminUserRepository;
-
-    @Autowired
-    FilesStorageService filesStorageService;
-
-    @Autowired
-    UserFileRepository fileRepository;
 
     @Autowired
     LoanRegistrationRepository loanRegistrationRepository;

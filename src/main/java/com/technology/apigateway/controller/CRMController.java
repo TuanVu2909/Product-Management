@@ -33,9 +33,6 @@ public class CRMController extends BaseResponse<AuthService> {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
-    @Autowired
-    AdminUserRepository userRepository;
-
     @PostMapping("token")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(

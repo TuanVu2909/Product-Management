@@ -3,9 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.BranchRequest;
 import com.technology.apigateway.database.entity.Branch;
-import com.technology.apigateway.database.repository.AreaRepository;
 import com.technology.apigateway.database.repository.BranchRepository;
-import com.technology.apigateway.database.repository.RegionRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +18,6 @@ public class BranchServiceImpl implements BranchService {
     @Autowired
     private BranchRepository branchRepository;
 
-    @Autowired
-    private AreaRepository areaRepository;
-
-    @Autowired
-    private RegionRepository regionRepository;
 
     @Override
     public List<BranchRequest> getAllBranch() {

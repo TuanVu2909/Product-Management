@@ -1,26 +1,18 @@
 package com.technology.apigateway.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.technology.apigateway.constant.ErrorCode;
+import com.technology.apigateway.controller.request.LoginRequest;
 import com.technology.apigateway.database.entity.AdminUser;
 import com.technology.apigateway.database.entity.User;
-import com.technology.apigateway.database.repository.BranchRepository;
-import com.technology.apigateway.database.repository.GroupUserRepository;
+import com.technology.apigateway.database.repository.AdminUserRepository;
+import com.technology.apigateway.database.repository.TokenRepository;
 import com.technology.apigateway.exception.BusinessException;
+import com.technology.apigateway.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.technology.apigateway.constant.ErrorCode;
-import com.technology.apigateway.controller.request.LoginRequest;
-import com.technology.apigateway.database.entity.Branch;
-import com.technology.apigateway.database.repository.TokenRepository;
-import com.technology.apigateway.database.repository.AdminUserRepository;
-import com.technology.apigateway.models.GroupFunctionModel;
-import com.technology.apigateway.runner.DataLoader;
-import com.technology.apigateway.service.AuthService;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service("authService")
 public class AuthServiceImpl implements AuthService {
@@ -31,11 +23,6 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     AdminUserRepository userRepository;
 
-    @Autowired
-    GroupUserRepository groupUserRepository;
-
-    @Autowired
-    BranchRepository branchRepository;
 
     @Override
     public Map<String, Object> login(LoginRequest loginRequest) {

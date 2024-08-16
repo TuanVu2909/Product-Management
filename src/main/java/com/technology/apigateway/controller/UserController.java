@@ -11,7 +11,6 @@ import com.technology.apigateway.service.AdminUserService;
 import com.technology.apigateway.service.AuthService;
 import com.technology.apigateway.service.CustomerService;
 import com.technology.apigateway.service.FilesStorageService;
-import com.technology.apigateway.service.GroupUserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api")
 @Log4j2
 public class UserController extends BaseResponse<AuthService> {
-
-    @Autowired
-    GroupUserService groupUserService;
 
     @Autowired
     AuthService authenticationService;
