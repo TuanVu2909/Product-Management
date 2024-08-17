@@ -30,6 +30,6 @@ public interface LoanRepository extends CrudRepository<ListLoan, Integer> {
 
     @Query(value = "select l.id, l.custid, c.fullname, l.lndate, l.amount, l.term, l.rate, l.feerate, l.rateovd, l.prinnml, l.prinovd, l.lnclass, l.intnml, " +
             "l.intovd, l.assetmanagementfee, l.assetmanagementovd, l.status, l.paytype, l.termtype, l.createddate, ' ' loanstatus,  c.idnumber, " +
-            "l.regid, c.mobile, l.documentno, l.insurancefee, l.guaranteetranfee, null salename, null branch, null expertisefeerate from loan l, customer c where l.custid = c.id and l.regid = ?1", nativeQuery = true)
+            "l.regid, c.mobile, l.documentno, l.insurancefee, l.guaranteetranfee, null salename, null branch, null expertisefeerate, null outstandingamount, null prepaymentfee from loan l, customer c where l.custid = c.id and l.regid = ?1", nativeQuery = true)
     List<ListLoan> findByRegId(Integer regId);
 }
