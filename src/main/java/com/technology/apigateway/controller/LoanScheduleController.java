@@ -3,7 +3,6 @@ package com.technology.apigateway.controller;
 import com.technology.apigateway.controller.request.OperatorLoanScheduleRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.service.LoanScheduleService;
-import com.technology.apigateway.service.LoanService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +23,6 @@ public class LoanScheduleController extends BaseResponse {
 
     @Autowired
     LoanScheduleService loanScheduleService;
-
-    @Autowired
-    LoanService loanService;
 
     @GetMapping("get-loan-schedule-by-loan-id/{loanId}")
     @Transactional(readOnly = true)

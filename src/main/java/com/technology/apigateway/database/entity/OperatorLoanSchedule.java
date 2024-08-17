@@ -111,4 +111,13 @@ public class OperatorLoanSchedule {
 
     @Column(name = "PREPAYMENTFEE")
     private Integer prePaymentFee;
+
+    @Column(name = "DOCUMENTNO")
+    private String documentNo;
+
+    @Column(name = "OVDDAYS")
+    private String ovdDays;
+
+
+
 }

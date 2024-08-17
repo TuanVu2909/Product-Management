@@ -34,4 +34,6 @@ public class OperatorLoanScheduleRequest {
 
     public String lnToDate;
 
+    public Integer userId;
+
 }
