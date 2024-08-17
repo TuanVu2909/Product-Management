@@ -24,5 +24,6 @@ public interface OperatorLoanScheduleRepository extends CrudRepository<OperatorL
                                                     @Param("pv_loanType") String loanType,
                                                     @Param("pv_saleFullName") String saleFullName,
                                                     @Param("pv_lnFromDate") String lnFromDate,
-                                                    @Param("pv_lnToDate") String lnToDate);
+                                                    @Param("pv_lnToDate") String lnToDate,
+                                                    @Param("pv_userId") Integer userId);
 }

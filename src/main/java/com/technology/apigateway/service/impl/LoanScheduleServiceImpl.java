@@ -75,7 +75,8 @@ public class LoanScheduleServiceImpl implements LoanScheduleService {
                 loanScheduleRequest.getLoanType(),
                 loanScheduleRequest.getSaleFullName(),
                 loanScheduleRequest.getLnFromDate(),
-                loanScheduleRequest.getLnToDate());
+                loanScheduleRequest.getLnToDate(),
+                loanScheduleRequest.getUserId());
         if (operatorLoanSchedule.isEmpty()) {
             throw new BusinessException(ErrorCode.NOT_FOUND_CUSTOMER, ErrorCode.NOT_FOUND_OPERATOR_LOAN);
         }

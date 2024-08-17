@@ -117,7 +117,4 @@ public class OperatorLoanSchedule {
 
     @Column(name = "OVDDAYS")
     private String ovdDays;
-
-
-
 }
