@@ -32,7 +32,8 @@ import java.util.Date;
                 @StoredProcedureParameter(name = "pv_loanType", mode = ParameterMode.IN, type = String.class),
                 @StoredProcedureParameter(name = "pv_saleFullName", mode = ParameterMode.IN, type = String.class),
                 @StoredProcedureParameter(name = "pv_lnFromDate", mode = ParameterMode.IN, type = String.class),
-                @StoredProcedureParameter(name = "pv_lnToDate", mode = ParameterMode.IN, type = String.class)
+                @StoredProcedureParameter(name = "pv_lnToDate", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "pv_userId", mode = ParameterMode.IN, type = Integer.class),
         })
 })
 public class OperatorLoanSchedule {
