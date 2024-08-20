@@ -138,7 +138,7 @@ public class LoanRegistrationServiceImpl implements LoanRegistrationService {
                 request.getVehicleBrand(),
                 request.getPayType());
         if (loanRegistrationList.isEmpty()) {
-            throw new BusinessException(ErrorCode.UNKNOWN_ERROR, "Not found Loan Registration");
+            throw new BusinessException(ErrorCode.UNKNOWN_ERROR, "Not found List Loan Registration");
         }
         return loanRegistrationList;
     }
