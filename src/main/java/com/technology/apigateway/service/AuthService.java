@@ -7,7 +7,7 @@ import com.technology.apigateway.database.entity.User;
 
 public interface AuthService {
 
-    public Map<String, Object> login(LoginRequest loginRequest);
+    Map<String, Object> login(LoginRequest loginRequest);
 
-    public User getUser();
+    User getUser();
 }
