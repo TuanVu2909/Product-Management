@@ -30,8 +30,6 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     GroupFunctionService groupFunctionService;
 
-    @Autowired
-    BranchService branchService;
 
     @Autowired
     AllCodeRepository allCodeRepository;
