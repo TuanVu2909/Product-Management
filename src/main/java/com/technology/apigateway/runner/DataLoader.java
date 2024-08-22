@@ -1,16 +1,5 @@
 package com.technology.apigateway.runner;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.microsoft.schemas.office.visio.x2012.main.PageType;
 import com.technology.apigateway.database.entity.AllCode;
 import com.technology.apigateway.database.entity.PayTypeConfig;
 import com.technology.apigateway.database.entity.RateAndFee;
@@ -18,10 +7,17 @@ import com.technology.apigateway.database.repository.AllCodeRepository;
 import com.technology.apigateway.database.repository.PayTypeRepository;
 import com.technology.apigateway.database.repository.RateAndFeeRepository;
 import com.technology.apigateway.models.GroupFunctionModel;
-import com.technology.apigateway.service.BranchService;
 import com.technology.apigateway.service.GroupFunctionService;
-
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 @Log4j2
