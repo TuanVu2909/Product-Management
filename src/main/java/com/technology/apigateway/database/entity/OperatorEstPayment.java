@@ -52,13 +52,13 @@ public class OperatorEstPayment {
     private Date duedate;
 
     @Column(name = "PRINNML")
-    private Integer prinnml;
+    private Double prinnml;
 
     @Column(name = "ESTINT")
-    private Integer estint;
+    private Double estint;
 
     @Column(name = "ESTPRIN")
-    private Integer estprin;
+    private Double estprin;
 
     @Column(name = "DUENO")
     private Integer dueno;
