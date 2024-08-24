@@ -112,11 +112,11 @@ public class LoanServiceImpl implements LoanService {
                 loanRequest.getInsuranceFee(),
                 loanRequest.getGuaranteeTranFee(),
                 loanRequest.getExpertiseFeePrePaid(),
-                Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getChangeRate() * 12)),
-                Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getAssetManagementFeeRate() * 12)),
-                Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getChangeRateOvd())),
-                Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getExpertiseFeeRate() * 12)),
-                Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getPrePaymentFeeRate())),
+                Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getChangeRate() * 12)),
+                Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getAssetManagementFeeRate() * 12)),
+                Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getChangeRateOvd())),
+                Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getExpertiseFeeRate() * 12)),
+                Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getPrePaymentFeeRate())),
                 loanRequest.getDocumentNo());
 
         if (loanStatus.getStatus().equals("0")) {
@@ -211,10 +211,10 @@ public class LoanServiceImpl implements LoanService {
                     "hoso" + Constants.FOLDER_SEPERATE + loanRequest.getCustId() + Constants.FOLDER_SEPERATE + "contracts"
                             + Constants.FOLDER_SEPERATE + "hopdongvay_" + loanRequest.getCustId() + "_" + dateFormat.format(curdate) + ".docx",
                     mainRequest, lstAdmin.get(0), loanRequest.getDocumentNo(),
-                    Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getChangeRate())),
-                    Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getPrePaymentFeeRate())), addressRequest,
-                    Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getAssetManagementFeeRate())),
-                    Double.parseDouble(new DecimalFormat("##.#").format(loanRequest.getExpertiseFeeRate()))
+                    Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getChangeRate())),
+                    Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getPrePaymentFeeRate())), addressRequest,
+                    Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getAssetManagementFeeRate())),
+                    Double.parseDouble(new DecimalFormat("##.##").format(loanRequest.getExpertiseFeeRate()))
             );
 
             MultipartFile mckFile = null;
