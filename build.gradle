@@ -68,6 +68,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-text
 	implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
 
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '3.2.5'
+
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.0'
 }
 

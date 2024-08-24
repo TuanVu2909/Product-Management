@@ -193,4 +193,10 @@ public class Constants {
 		AFM_DEAL_STATUS.put("20", "Khớp tiền thành công");
 		AFM_DEAL_STATUS.put("21", "Khớp tiền không thành công");
 	}
+
+	// South telecom
+	public static final String SOUTH_TELECOM_SMS_API_USER = "finy_api";
+	public static final String SOUTH_TELECOM_SMS_API_PASSWORD = "5TK4CcuV";
+	public static final String SOUTH_TELECOM_SMS_API_URI_1 = "https://api-01.worldsms.vn/webapi/sendSMS";
+	public static final String SOUTH_TELECOM_SMS_API_URI_2 = "https://api-02.worldsms.vn/webapi/sendSMS";
 }
