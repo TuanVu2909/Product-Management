@@ -1,18 +1,9 @@
 package com.technology.apigateway.service.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
-import org.apache.commons.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.CustomerRequest;
 import com.technology.apigateway.controller.request.GetCustomerRequest;
+import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
 import com.technology.apigateway.database.entity.Customer;
 import com.technology.apigateway.database.entity.CustomerStatus;
 import com.technology.apigateway.database.entity.GuardiansEntity;
@@ -37,21 +28,43 @@ import com.technology.apigateway.database.repository.UserFileRepository;
 import com.technology.apigateway.database.repository.UserScoringRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.CustomerService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service("customerService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
     CustomerStatusRepository customerStatusRepository;
 
-    @Autowired
     CustomerRepository customerRepository;
 
-    @Autowired
     ListCustomerBalanceRepository balanceRepository;
 
-    @Autowired
     ListTransactionRepository transactionRepository;
+
+    IncomeRepository incomeRepository;
+
+    GuardiansRepository guardiansRepository;
+
+    ReferencesRepository referencesRepository;
+
+    ScoringRepository scoringRepository;
+
+    UserScoringRepository userScoringRepository;
+
+    SimilarAssetsRepository assetsRepository;
+
+    UserFileRepository fileRepository;
 
     @Override
     public List<CustomerRequest> getAllCustomer() {
@@ -194,9 +207,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerStatus;
     }
 
-    @Autowired
-    IncomeRepository incomeRepository;
-
     @Override
     public List<Customer> getCustomerWhere(GetCustomerRequest request) {
         List<Customer> customerList = customerRepository.getCustomerWhere(
@@ -219,16 +229,10 @@ public class CustomerServiceImpl implements CustomerService {
         return incomeRepository.findByUserId(request.getCareId());
     }
 
-    @Autowired
-    GuardiansRepository guardiansRepository;
-
     @Override
     public List<GuardiansEntity> getGuardiansByUserId(GetCustomerRequest request) {
         return guardiansRepository.findByUserId(request.getCareId());
     }
-
-    @Autowired
-    ReferencesRepository referencesRepository;
 
     @Override
     public List<ReferencesEntity> getReferencesByUserId(GetCustomerRequest request) {
@@ -245,12 +249,6 @@ public class CustomerServiceImpl implements CustomerService {
         return incomeRepository.getCustomerIncome(request.getUserId(), request.getIncomeType());
     }
 
-    @Autowired
-    ScoringRepository scoringRepository;
-
-    @Autowired
-    UserScoringRepository userScoringRepository;
-
     @Override
     public UserScoring getScoring(int userId) {
         // TODO Auto-generated method stub
@@ -263,17 +261,11 @@ public class CustomerServiceImpl implements CustomerService {
         return scoringRepository.getScoringCal(userId);
     }
 
-    @Autowired
-    SimilarAssetsRepository assetsRepository;
-
     @Override
     public List<SimilarAssets> getSameAssets(int userId) {
         // TODO Auto-generated method stub
         return assetsRepository.findByUserId(userId);
     }
-
-    @Autowired
-    UserFileRepository fileRepository;
 
     @Override
     public List<UserFile> getUserFile(Integer custId) throws IOException {

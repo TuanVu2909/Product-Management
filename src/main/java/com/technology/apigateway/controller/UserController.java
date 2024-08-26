@@ -11,8 +11,10 @@ import com.technology.apigateway.service.AdminUserService;
 import com.technology.apigateway.service.AuthService;
 import com.technology.apigateway.service.CustomerService;
 import com.technology.apigateway.service.FilesStorageService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,16 +32,17 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api")
 @Log4j2
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserController extends BaseResponse<AuthService> {
 
-    @Autowired
     AuthService authenticationService;
 
-    @Autowired
     AdminUserService adminUserService;
 
-    @Autowired
     FilesStorageService filesStorageService;
+
+    CustomerService customerService;
 
     @PostMapping("login")
     @Transactional(readOnly = true)
@@ -133,8 +136,7 @@ public class UserController extends BaseResponse<AuthService> {
         }
     }
 
-    @Autowired
-    CustomerService customerService;
+
 
     @PostMapping("/get-user-file")
     public ResponseEntity<?> listUserFile(HttpServletRequest httpServletRequest,

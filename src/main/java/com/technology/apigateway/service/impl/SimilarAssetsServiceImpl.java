@@ -9,17 +9,18 @@ import com.technology.apigateway.database.repository.CustomerStatusRepository;
 import com.technology.apigateway.database.repository.SimilarAssetsRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.SimilarAssetsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 @Service("similarAssets")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SimilarAssetsServiceImpl implements SimilarAssetsService {
 
-    @Autowired
     CustomerStatusRepository customerStatusRepository;
 
-
-    @Autowired
     SimilarAssetsRepository similarAssetsRepository;
 
     @Override

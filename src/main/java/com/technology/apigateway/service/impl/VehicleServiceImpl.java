@@ -18,7 +18,9 @@ import com.technology.apigateway.database.repository.VehicleStateRepository;
 import com.technology.apigateway.database.repository.VehicleTypeRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,22 +28,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("vehicleService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class VehicleServiceImpl implements VehicleService {
 
-    @Autowired
-    private VehicleRepository vehicleRepository;
+    VehicleRepository vehicleRepository;
 
-    @Autowired
-    private VehicleStateRepository vehicleStateRepository;
+    VehicleStateRepository vehicleStateRepository;
 
-    @Autowired
-    private VehicleCompanyRepository vehicleCompanyRepository;
+    VehicleCompanyRepository vehicleCompanyRepository;
 
-    @Autowired
-    private VehicleTypeRepository vehicleTypeRepository;
+    VehicleTypeRepository vehicleTypeRepository;
 
-    @Autowired
-    private CalculatorRepository calculatorRepository;
+    CalculatorRepository calculatorRepository;
 
     @Override
     public CalculatorStatus calculatePrice(CalculatePrice calculatePrice) {

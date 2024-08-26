@@ -11,19 +11,46 @@ import com.technology.apigateway.controller.request.LoanRequest;
 import com.technology.apigateway.controller.request.MainRequest;
 import com.technology.apigateway.controller.request.OperatorLoanRequest;
 import com.technology.apigateway.controller.request.references.ReferenceRequest;
-import com.technology.apigateway.database.entity.*;
-import com.technology.apigateway.database.repository.*;
+import com.technology.apigateway.database.entity.AdminUser;
+import com.technology.apigateway.database.entity.Customer;
+import com.technology.apigateway.database.entity.District;
+import com.technology.apigateway.database.entity.GuardiansEntity;
+import com.technology.apigateway.database.entity.ListLoan;
+import com.technology.apigateway.database.entity.ListLoanRegistration;
+import com.technology.apigateway.database.entity.LoanStatus;
+import com.technology.apigateway.database.entity.OperatorLoan;
+import com.technology.apigateway.database.entity.Province;
+import com.technology.apigateway.database.entity.ReferencesEntity;
+import com.technology.apigateway.database.entity.Vehicle;
+import com.technology.apigateway.database.entity.VehicleCompany;
+import com.technology.apigateway.database.entity.Ward;
+import com.technology.apigateway.database.repository.AdminUserRepository;
+import com.technology.apigateway.database.repository.CustomerRepository;
+import com.technology.apigateway.database.repository.DistrictRepository;
+import com.technology.apigateway.database.repository.GuardiansRepository;
+import com.technology.apigateway.database.repository.LoanRegistrationRepository;
+import com.technology.apigateway.database.repository.LoanRepository;
+import com.technology.apigateway.database.repository.LoanStatusRepository;
+import com.technology.apigateway.database.repository.OperatorLoanRepository;
+import com.technology.apigateway.database.repository.ProvinceRepository;
+import com.technology.apigateway.database.repository.ReferencesRepository;
+import com.technology.apigateway.database.repository.UserFileRepository;
+import com.technology.apigateway.database.repository.VehicleCompanyRepository;
+import com.technology.apigateway.database.repository.VehicleRepository;
+import com.technology.apigateway.database.repository.WardRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.runner.DataLoader;
 import com.technology.apigateway.service.FilesStorageService;
 import com.technology.apigateway.service.LoanService;
 import com.technology.apigateway.utils.ApiUtils;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -51,54 +78,40 @@ import java.util.Optional;
 
 @Log4j2
 @Service("loanService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LoanServiceImpl implements LoanService {
 
-    @Autowired
     LoanRepository loanRepository;
 
-    @Autowired
     LoanStatusRepository loanStatusRepository;
 
-    @Autowired
     OperatorLoanRepository operatorLoanRepository;
 
-    @Autowired
     CustomerRepository customerRepository;
 
-    @Autowired
     AdminUserRepository adminUserRepository;
 
-    @Autowired
     LoanRegistrationRepository loanRegistrationRepository;
 
-    @Autowired
     FilesStorageService filesStorageService;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
-    @Autowired
     UserFileRepository fileRepository;
 
-    @Autowired
     ReferencesRepository referencesRepository;
 
-    @Autowired
     WardRepository wardRepository;
 
-    @Autowired
     ProvinceRepository provinceRepository;
 
-    @Autowired
     DistrictRepository districtRepository;
 
-    @Autowired
     VehicleRepository vehicleRepository;
 
-    @Autowired
     VehicleCompanyRepository vehicleCompanyRepository;
 
-    @Autowired
     GuardiansRepository guardiansRepository;
 
     @Override
