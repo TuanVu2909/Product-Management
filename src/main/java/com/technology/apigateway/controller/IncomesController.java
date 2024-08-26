@@ -4,8 +4,10 @@ import com.technology.apigateway.controller.request.incomes.CreateIncomesRequest
 import com.technology.apigateway.controller.request.incomes.UpdateIncomesRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.service.IncomesService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api")
 @Log4j2
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class IncomesController extends BaseResponse {
 
-    @Autowired
     IncomesService incomesService;
 
     @PostMapping("create-incomes")

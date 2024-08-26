@@ -12,23 +12,24 @@ import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.models.FunctionModel;
 import com.technology.apigateway.models.GroupFunctionModel;
 import com.technology.apigateway.service.GroupFunctionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service("groupFunctionService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class GroupFunctionServiceImpl implements GroupFunctionService {
 
-    @Autowired
     GroupFunctionRepository groupFunctionRepository;
 
-    @Autowired
-    private FunctionRepository allFunctionRepository;
+    FunctionRepository allFunctionRepository;
 
-    @Autowired
-    private GroupFunctionStatusRepository groupFunctionStatusRepository;
+    GroupFunctionStatusRepository groupFunctionStatusRepository;
 
     @Override
     public List<GroupFunctionModel> getGroupFunction() {

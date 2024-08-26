@@ -1,24 +1,11 @@
 package com.technology.apigateway.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
-import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.technology.apigateway.constant.Constants;
 import com.technology.apigateway.controller.request.AddCommentRequest;
 import com.technology.apigateway.controller.request.ChangePasswordRequest;
 import com.technology.apigateway.controller.request.CustomerRequest;
 import com.technology.apigateway.controller.request.GetCustomerRequest;
+import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.database.entity.ChangePassword;
 import com.technology.apigateway.database.repository.AddCommentRepository;
@@ -28,17 +15,39 @@ import com.technology.apigateway.database.repository.PayTypeRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.runner.DataLoader;
 import com.technology.apigateway.service.CustomerService;
-
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 //@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerController extends BaseResponse {
 
-    @Autowired
     CustomerService customerService;
+
+    PayTypeRepository payTypeRepository;
+
+    AddCommentRepository addCommentRepository;
+
+    CommentRepository commentRepository;
+
+    ChangePasswordRepository passwordRepository;
 
     @GetMapping("get-all-customer")
     @Transactional(readOnly = true)
@@ -126,8 +135,6 @@ public class CustomerController extends BaseResponse {
         return response(toResult(DataLoader.mapAllCode.get(id + "PAYTYPE").getName()));
     }
 
-    @Autowired
-    PayTypeRepository payTypeRepository;
 
     @GetMapping("get-all-paytypeconf")
     @Transactional(readOnly = true)
@@ -136,11 +143,6 @@ public class CustomerController extends BaseResponse {
         return response(toResult(payTypeRepository.findAll()));
     }
 
-    @Autowired
-    AddCommentRepository addCommentRepository;
-
-    @Autowired
-    CommentRepository commentRepository;
 
     @PostMapping("add-comment")
     @Transactional(readOnly = true)
@@ -165,8 +167,6 @@ public class CustomerController extends BaseResponse {
         return response(toResult(customerService.getListCustomerBalance()));
     }
 
-    @Autowired
-    ChangePasswordRepository passwordRepository;
 
     @PostMapping("change-password")
     @Transactional(readOnly = true)

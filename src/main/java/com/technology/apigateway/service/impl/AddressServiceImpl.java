@@ -12,7 +12,9 @@ import com.technology.apigateway.database.repository.ProvinceRepository;
 import com.technology.apigateway.database.repository.WardRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,16 +22,15 @@ import java.util.List;
 
 
 @Service("addressService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AddressServiceImpl implements AddressService {
 
-    @Autowired
-    private DistrictRepository districtRepository;
+    DistrictRepository districtRepository;
 
-    @Autowired
-    private ProvinceRepository provinceRepository;
+    ProvinceRepository provinceRepository;
 
-    @Autowired
-    private WardRepository wardRepository;
+    WardRepository wardRepository;
 
     @Override
     public List<DistrictRequest> getAllDistrict() {

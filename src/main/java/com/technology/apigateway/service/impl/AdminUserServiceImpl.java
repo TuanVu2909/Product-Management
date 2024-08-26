@@ -17,6 +17,9 @@ import com.technology.apigateway.database.repository.SaleOverviewRepository;
 import com.technology.apigateway.database.repository.UserFileRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.AdminUserService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,24 +27,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("adminUserService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AdminUserServiceImpl implements AdminUserService {
 
-    @Autowired
     AdminUserRepository adminUserRepository;
 
-    @Autowired
     AdminUserStatusRepository adminUserStatusRepository;
 
-    @Autowired
     OperatorEstPaymentRepository operatorEstPaymentRepository;
 
-    @Autowired
     SaleOverviewRepository saleOverviewRepository;
 
-    @Autowired
     OperatorOverviewRepository operatorOverviewRepository;
 
-    @Autowired
     UserFileRepository userFileRepository;
 
     @Override

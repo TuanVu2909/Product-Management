@@ -9,18 +9,20 @@ import com.technology.apigateway.database.repository.TransactionOperatorReposito
 import com.technology.apigateway.database.repository.TransactionRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.TransactionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("transactionService")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class TransactionServiceImpl implements TransactionService {
 
-    @Autowired
     TransactionRepository transactionRepository;
 
-    @Autowired
     TransactionOperatorRepository transactionOperatorRepository;
 
     @Override
