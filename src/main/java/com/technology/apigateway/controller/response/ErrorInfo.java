@@ -7,15 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/***********************************************************************
- * 
- * @package：com.lendbiz.p2p.api.response，@class-name：ErrorInfo.java
- * 
- * @copyright Copyright: 2021-2022
- * @creator Hoang Thanh Tu <br/>
- * @create-time Apr 9, 2021 10:30:37 AM
- *
- ***********************************************************************/
 @Getter
 @Setter
 @ToString

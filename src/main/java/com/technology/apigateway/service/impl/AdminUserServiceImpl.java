@@ -3,16 +3,19 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.AdminUserRequest;
 import com.technology.apigateway.controller.request.OperatorEstPaymentRequest;
+import com.technology.apigateway.controller.request.OutStandingLoanRequest;
 import com.technology.apigateway.database.entity.AdminUser;
 import com.technology.apigateway.database.entity.AdminUserStatus;
 import com.technology.apigateway.database.entity.OperatorEstPayment;
 import com.technology.apigateway.database.entity.OperatorOverview;
+import com.technology.apigateway.database.entity.OutStandingLoan;
 import com.technology.apigateway.database.entity.SaleOverview;
 import com.technology.apigateway.database.entity.UserFile;
 import com.technology.apigateway.database.repository.AdminUserRepository;
 import com.technology.apigateway.database.repository.AdminUserStatusRepository;
 import com.technology.apigateway.database.repository.OperatorEstPaymentRepository;
 import com.technology.apigateway.database.repository.OperatorOverviewRepository;
+import com.technology.apigateway.database.repository.OutStandingLoanRepository;
 import com.technology.apigateway.database.repository.SaleOverviewRepository;
 import com.technology.apigateway.database.repository.UserFileRepository;
 import com.technology.apigateway.exception.BusinessException;
@@ -20,7 +23,6 @@ import com.technology.apigateway.service.AdminUserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ public class AdminUserServiceImpl implements AdminUserService {
     OperatorOverviewRepository operatorOverviewRepository;
 
     UserFileRepository userFileRepository;
+
+    OutStandingLoanRepository outStandingLoanRepository;
 
     @Override
     public List<AdminUserRequest> getAllAdminUser() {
@@ -178,5 +182,19 @@ public class AdminUserServiceImpl implements AdminUserService {
             throw new BusinessException(ErrorCode.UNKNOWN_ERROR, ErrorCode.NOT_FOUND_OPERATOR);
         }
         return operatorEstPaymentList;
+    }
+
+    @Override
+    public List<OutStandingLoan> outStandingLoan(OutStandingLoanRequest outStandingLoanRequest) {
+        List<OutStandingLoan> outStandingLoanList = outStandingLoanRepository.outStandingLoan(
+                outStandingLoanRequest.getUserId(),
+                outStandingLoanRequest.getFullName(),
+                outStandingLoanRequest.getBranch(),
+                outStandingLoanRequest.getFromDate(),
+                outStandingLoanRequest.getToDate());
+        if (outStandingLoanList.isEmpty()) {
+            throw new BusinessException(ErrorCode.UNKNOWN_ERROR, ErrorCode.NOT_FOUND_OPERATOR);
+        }
+        return outStandingLoanList;
     }
 }

@@ -5,6 +5,7 @@ import com.technology.apigateway.controller.request.AdminUserRequest;
 import com.technology.apigateway.controller.request.GetFileRequest;
 import com.technology.apigateway.controller.request.LoginRequest;
 import com.technology.apigateway.controller.request.OperatorEstPaymentRequest;
+import com.technology.apigateway.controller.request.OutStandingLoanRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.AdminUserService;
@@ -176,5 +177,11 @@ public class UserController extends BaseResponse<AuthService> {
     @Transactional(readOnly = true)
     public ResponseEntity<?> operatorEstPayment(HttpServletRequest httpServletRequest, @RequestBody OperatorEstPaymentRequest operatorEstPaymentRequest) {
         return response(toResult(adminUserService.operatorEstPayment(operatorEstPaymentRequest)));
+    }
+
+    @PostMapping("out-standing-loan")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> outStandingLoan(HttpServletRequest httpServletRequest, @RequestBody OutStandingLoanRequest outStandingLoanRequest){
+        return response(toResult(adminUserService.outStandingLoan(outStandingLoanRequest)));
     }
 }

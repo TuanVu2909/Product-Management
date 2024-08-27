@@ -19,5 +19,6 @@ public interface TransactionOperatorRepository extends CrudRepository<OperatorTr
                                                   @Param("pv_tranName") String tranName,
                                                   @Param("pv_tranDes") String tranDes,
                                                   @Param("pv_fromDate") String fromDate,
-                                                  @Param("pv_toDate") String toDate);
+                                                  @Param("pv_toDate") String toDate,
+                                                  @Param("pv_userId") Integer userId);
 }
