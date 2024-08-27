@@ -82,7 +82,8 @@ public class TransactionServiceImpl implements TransactionService {
                 operatorTransactionRequest.getTranName(),
                 operatorTransactionRequest.getTranDes(),
                 operatorTransactionRequest.getFromDate(),
-                operatorTransactionRequest.getToDate());
+                operatorTransactionRequest.getToDate(),
+                operatorTransactionRequest.getUserId());
         if (transactionList.isEmpty()) {
             throw new BusinessException(ErrorCode.NOT_FOUND_CUSTOMER, ErrorCode.NOT_FOUND_OPERATOR);
         }

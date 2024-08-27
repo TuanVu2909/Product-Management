@@ -28,6 +28,7 @@ import java.sql.Date;
                 @StoredProcedureParameter(name = "pv_tranDes", mode = ParameterMode.IN, type = String.class),
                 @StoredProcedureParameter(name = "pv_fromDate", mode = ParameterMode.IN, type = String.class),
                 @StoredProcedureParameter(name = "pv_toDate", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "pv_userId", mode = ParameterMode.IN, type = Integer.class),
         })
 })
 public class OperatorTransaction {
@@ -56,6 +57,6 @@ public class OperatorTransaction {
     @Column(name = "TRANVALUE")
     private int tranValue;
 
-    @Column(name = "TRANDES")
-    private String tranDes;
+    @Column(name = "DUENO")
+    private String dueno;
 }

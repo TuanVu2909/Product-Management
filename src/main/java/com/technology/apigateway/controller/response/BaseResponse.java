@@ -15,15 +15,6 @@ import org.springframework.http.ResponseEntity;
 import com.technology.apigateway.constant.Constants;
 import com.technology.apigateway.utils.StringUtil;
 
-/***********************************************************************
- * 
- * @package：com.lendbiz.p2p.api.response，@class-name：BaseResponse.java
- * 
- * @copyright Copyright: 2021-2022
- * @creator Hoang Thanh Tu <br/>
- * @create-time Apr 9, 2021 10:55:55 AM
- *
- ***********************************************************************/
 public abstract class BaseResponse<S> {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());

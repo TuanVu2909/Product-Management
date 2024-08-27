@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository("operatorOverviewRepository")
 public interface OperatorOverviewRepository extends CrudRepository<OperatorOverview, Integer> {
+
     @Procedure("OperatorOverview.operatorOverview")
     List<OperatorOverview> operatorOverview(@Param("pv_userId") int userid);
 }

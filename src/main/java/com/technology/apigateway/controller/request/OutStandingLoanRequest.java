@@ -10,22 +10,15 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OperatorTransactionRequest {
+public class OutStandingLoanRequest {
+
+    Integer userId;
+
     String fullName;
 
-    String mobile;
-
-    String idNumber;
-
     String branch;
-
-    String tranName;
-
-    String tranDes;
 
     String fromDate;
 
     String toDate;
-
-    Integer userId;
 }
