@@ -1,39 +1,41 @@
 package com.technology.apigateway.controller.request;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class OperatorLoanScheduleRequest {
-    public Integer loanId;
+    Integer loanId;
 
-    public Integer loanScheduleId;
+    Integer loanScheduleId;
 
-    public Integer custId;
+    Integer custId;
 
-    public String fullName;
+    String fullName;
 
-    public String mobile;
+    String mobile;
 
-    public String idNumber;
+    String idNumber;
 
-    public String branch;
+    String branch;
 
-    public String payType;
+    String payType;
 
-    public String loanStatus;
+    String loanStatus;
 
-    public String loanType;
+    String loanType;
 
-    public String saleFullName;
+    String saleFullName;
 
-    public String lnFromDate;
+    String lnFromDate;
 
-    public String lnToDate;
+    String lnToDate;
 
-    public Integer userId;
-
+    Integer userId;
 }
