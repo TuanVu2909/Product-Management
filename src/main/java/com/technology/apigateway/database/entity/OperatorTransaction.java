@@ -55,8 +55,11 @@ public class OperatorTransaction {
     private String tranName;
 
     @Column(name = "TRANVALUE")
-    private int tranValue;
+    private Integer tranValue;
+
+    @Column(name = "TRANDES")
+    private String tranDes;
 
     @Column(name = "DUENO")
-    private String dueno;
+    private Integer dueno;
 }
