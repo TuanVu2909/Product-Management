@@ -1,8 +1,11 @@
 package com.technology.apigateway.database.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +16,11 @@ import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "OutStandingLoan.outStandingLoan", procedureName = "pck_report.outstandingLoan", resultClasses = OutStandingLoan.class, parameters = {
                 @StoredProcedureParameter(name = "pv_refcursor", mode = ParameterMode.REF_CURSOR, type = Void.class),
@@ -28,19 +33,19 @@ import javax.persistence.StoredProcedureParameter;
 })
 public class OutStandingLoan {
     @Id
+    @Column(name = "USERID")
+    int userId;
+
     @Column(name = "FULLNAME")
-    private String fullName;
+    String fullName;
 
     @Column(name = "BRANCH")
-    private String branch;
+    String branch;
 
     @Column(name = "PRINNML")
-    private String prinnml;
+    String prinnml;
 
     @Column(name = "BUSINESSDATE")
-    private String businessdate;
-
-
-
+    String businessdate;
 
 }
