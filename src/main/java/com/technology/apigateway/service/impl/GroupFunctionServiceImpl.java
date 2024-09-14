@@ -4,7 +4,7 @@ import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.GroupFunctionRequest;
 import com.technology.apigateway.database.entity.Function;
 import com.technology.apigateway.database.entity.GroupFunction;
-import com.technology.apigateway.database.entity.GroupFunctionStatus;
+import com.technology.apigateway.database.entity.status.GroupFunctionStatus;
 import com.technology.apigateway.database.repository.FunctionRepository;
 import com.technology.apigateway.database.repository.GroupFunctionRepository;
 import com.technology.apigateway.database.repository.GroupFunctionStatusRepository;

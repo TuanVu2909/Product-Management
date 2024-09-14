@@ -3,7 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.GroupUserRequest;
 import com.technology.apigateway.database.entity.GroupUser;
-import com.technology.apigateway.database.entity.GroupUserStatus;
+import com.technology.apigateway.database.entity.status.GroupUserStatus;
 import com.technology.apigateway.database.repository.GroupUserRepository;
 import com.technology.apigateway.database.repository.GroupUserStatusRepository;
 import com.technology.apigateway.exception.BusinessException;

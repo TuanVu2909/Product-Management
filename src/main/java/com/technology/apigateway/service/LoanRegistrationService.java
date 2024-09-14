@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.technology.apigateway.controller.request.LoanRegistrationRequest;
 import com.technology.apigateway.database.entity.ListLoanRegistration;
-import com.technology.apigateway.database.entity.LoanRegistrationStatus;
+import com.technology.apigateway.database.entity.status.LoanRegistrationStatus;
 
 public interface LoanRegistrationService {
 

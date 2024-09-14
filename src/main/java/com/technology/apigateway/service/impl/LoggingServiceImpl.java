@@ -89,7 +89,7 @@ public class LoggingServiceImpl implements LoggingService {
             log.error(e.getMessage());
         }
 
-        log.info(stringBuilder.toString());
+        //log.info(stringBuilder.toString());
     }
 
     @Override
@@ -136,7 +136,7 @@ public class LoggingServiceImpl implements LoggingService {
 
         }
 
-        log.info(stringBuilder.toString());
+        //log.info(stringBuilder.toString());
     }
 
     private Map<String, String> buildParametersMap(HttpServletRequest httpServletRequest) {

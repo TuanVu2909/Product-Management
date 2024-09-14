@@ -3,7 +3,7 @@ package com.technology.apigateway.service;
 import com.technology.apigateway.controller.request.OperatorTransactionRequest;
 import com.technology.apigateway.controller.request.TransactionRequest;
 import com.technology.apigateway.database.entity.OperatorTransaction;
-import com.technology.apigateway.database.entity.TransactionStatus;
+import com.technology.apigateway.database.entity.status.TransactionStatus;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.technology.apigateway.database.repository;
 
-import com.technology.apigateway.database.entity.LoanLimitStatus;
+import com.technology.apigateway.database.entity.status.LoanLimitStatus;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
