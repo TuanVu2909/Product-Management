@@ -5,7 +5,7 @@ import com.technology.apigateway.controller.request.CustomerRequest;
 import com.technology.apigateway.controller.request.GetCustomerRequest;
 import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
 import com.technology.apigateway.database.entity.Customer;
-import com.technology.apigateway.database.entity.CustomerStatus;
+import com.technology.apigateway.database.entity.status.CustomerStatus;
 import com.technology.apigateway.database.entity.GuardiansEntity;
 import com.technology.apigateway.database.entity.IncomeEntity;
 import com.technology.apigateway.database.entity.ListCustomerBalance;

@@ -4,7 +4,7 @@ import com.technology.apigateway.controller.request.AdminUserRequest;
 import com.technology.apigateway.controller.request.OperatorEstPaymentRequest;
 import com.technology.apigateway.controller.request.OutStandingLoanRequest;
 import com.technology.apigateway.database.entity.AdminUser;
-import com.technology.apigateway.database.entity.AdminUserStatus;
+import com.technology.apigateway.database.entity.status.AdminUserStatus;
 import com.technology.apigateway.database.entity.OperatorEstPayment;
 import com.technology.apigateway.database.entity.OperatorOverview;
 import com.technology.apigateway.database.entity.OutStandingLoan;

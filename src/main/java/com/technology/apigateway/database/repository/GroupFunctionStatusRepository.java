@@ -1,6 +1,6 @@
 package com.technology.apigateway.database.repository;
 
-import com.technology.apigateway.database.entity.GroupFunctionStatus;
+import com.technology.apigateway.database.entity.status.GroupFunctionStatus;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

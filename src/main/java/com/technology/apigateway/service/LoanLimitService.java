@@ -2,7 +2,7 @@ package com.technology.apigateway.service;
 
 import com.technology.apigateway.controller.request.LoanLimitRequest;
 import com.technology.apigateway.database.entity.ListLoanLimit;
-import com.technology.apigateway.database.entity.LoanLimitStatus;
+import com.technology.apigateway.database.entity.status.LoanLimitStatus;
 
 import java.util.List;
 

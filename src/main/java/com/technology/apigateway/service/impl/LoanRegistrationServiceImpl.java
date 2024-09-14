@@ -3,7 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.LoanRegistrationRequest;
 import com.technology.apigateway.database.entity.ListLoanRegistration;
-import com.technology.apigateway.database.entity.LoanRegistrationStatus;
+import com.technology.apigateway.database.entity.status.LoanRegistrationStatus;
 import com.technology.apigateway.database.repository.LoanRegistrationRepository;
 import com.technology.apigateway.database.repository.LoanRegistrationStatusRepository;
 import com.technology.apigateway.exception.BusinessException;

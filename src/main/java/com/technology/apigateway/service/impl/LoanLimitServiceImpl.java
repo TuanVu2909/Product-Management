@@ -3,7 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.LoanLimitRequest;
 import com.technology.apigateway.database.entity.ListLoanLimit;
-import com.technology.apigateway.database.entity.LoanLimitStatus;
+import com.technology.apigateway.database.entity.status.LoanLimitStatus;
 import com.technology.apigateway.database.repository.LoanLimitRepository;
 import com.technology.apigateway.database.repository.LoanLimitStatusRepository;
 import com.technology.apigateway.exception.BusinessException;

@@ -1,4 +1,4 @@
-package com.technology.apigateway.database.entity;
+package com.technology.apigateway.database.entity.status;
 
 
 import lombok.Getter;

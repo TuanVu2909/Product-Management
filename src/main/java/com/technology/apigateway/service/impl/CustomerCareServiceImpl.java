@@ -3,7 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.CustomerCareRequest;
 import com.technology.apigateway.database.entity.CustomerCare;
-import com.technology.apigateway.database.entity.CustomerCareStatus;
+import com.technology.apigateway.database.entity.status.CustomerCareStatus;
 import com.technology.apigateway.database.repository.CustomerCareRepository;
 import com.technology.apigateway.database.repository.CustomerCareStatusRepository;
 import com.technology.apigateway.exception.BusinessException;

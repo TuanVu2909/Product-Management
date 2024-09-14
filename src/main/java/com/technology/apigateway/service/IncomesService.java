@@ -2,7 +2,7 @@ package com.technology.apigateway.service;
 
 import com.technology.apigateway.controller.request.incomes.CreateIncomesRequest;
 import com.technology.apigateway.controller.request.incomes.UpdateIncomesRequest;
-import com.technology.apigateway.database.entity.CustomerStatus;
+import com.technology.apigateway.database.entity.status.CustomerStatus;
 import com.technology.apigateway.database.entity.IncomeEntity;
 
 public interface IncomesService {

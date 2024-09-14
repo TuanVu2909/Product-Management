@@ -1,7 +1,7 @@
 package com.technology.apigateway.service;
 
 import com.technology.apigateway.controller.request.CustomerCareRequest;
-import com.technology.apigateway.database.entity.CustomerCareStatus;
+import com.technology.apigateway.database.entity.status.CustomerCareStatus;
 
 import java.util.List;
 

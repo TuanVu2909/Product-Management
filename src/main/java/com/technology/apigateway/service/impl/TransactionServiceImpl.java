@@ -4,7 +4,7 @@ import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.OperatorTransactionRequest;
 import com.technology.apigateway.controller.request.TransactionRequest;
 import com.technology.apigateway.database.entity.OperatorTransaction;
-import com.technology.apigateway.database.entity.TransactionStatus;
+import com.technology.apigateway.database.entity.status.TransactionStatus;
 import com.technology.apigateway.database.repository.TransactionOperatorRepository;
 import com.technology.apigateway.database.repository.TransactionRepository;
 import com.technology.apigateway.exception.BusinessException;

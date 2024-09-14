@@ -1,6 +1,6 @@
 package com.technology.apigateway.database.repository;
 
-import com.technology.apigateway.database.entity.CustomerStatus;
+import com.technology.apigateway.database.entity.status.CustomerStatus;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

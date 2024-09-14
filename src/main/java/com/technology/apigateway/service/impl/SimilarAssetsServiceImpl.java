@@ -3,7 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.SimilarAssetsRequest;
 import com.technology.apigateway.controller.request.similarAssets.CreateSimilarAssetsRequest;
-import com.technology.apigateway.database.entity.CustomerStatus;
+import com.technology.apigateway.database.entity.status.CustomerStatus;
 import com.technology.apigateway.database.entity.SimilarAssets;
 import com.technology.apigateway.database.repository.CustomerStatusRepository;
 import com.technology.apigateway.database.repository.SimilarAssetsRepository;
