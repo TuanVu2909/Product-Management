@@ -196,7 +196,7 @@ public class LoanServiceImpl implements LoanService {
         mainRequest.setFuel(listLoanRegistration.get(0).getFuel());
         mainRequest.setRegistrationNumber(listLoanRegistration.get(0).getRegistrationNumber());
         mainRequest.setVehicleNumber(listLoanRegistration.get(0).getVehicleNumber());
-        mainRequest.setVehiclePrice(Integer.parseInt(listLoanRegistration.get(0).getVehiclePrice()));
+        mainRequest.setVehiclePrice(Long.parseLong(listLoanRegistration.get(0).getVehiclePrice()));
         mainRequest.setVehicleRegistrationDate(listLoanRegistration.get(0).getVehicleRegistrationDate());
         mainRequest.setSaleId(Integer.parseInt(listLoanRegistration.get(0).getSaleId()));
         mainRequest.setVehicleBrand(optionalVehicleCompany.get().getName());

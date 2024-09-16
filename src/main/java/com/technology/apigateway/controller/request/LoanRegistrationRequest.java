@@ -25,7 +25,7 @@ public class LoanRegistrationRequest {
     private String registrationNumber;
     private String engineNumber;
     private String chassisNumber;
-    private Integer vehiclePrice;
+    private Long vehiclePrice;
     private Integer loanAmount;
     private Integer term;
     private String status;

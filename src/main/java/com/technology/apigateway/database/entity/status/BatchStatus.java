@@ -17,9 +17,9 @@ import javax.persistence.StoredProcedureParameter;
 @Setter
 @ToString
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "BatchStatus.runBatch", procedureName = "prc_autorunbatch.", resultClasses = BatchStatus.class, parameters = {
+        @NamedStoredProcedureQuery(name = "BatchStatus.prc_runbatch", procedureName = "prc_runbatch", resultClasses = BatchStatus.class, parameters = {
             @StoredProcedureParameter(name="pv_refcursor", mode = ParameterMode.REF_CURSOR, type = Void.class),
-            @StoredProcedureParameter(name="pv_userId", mode = ParameterMode.IN, type = Void.class),
+            @StoredProcedureParameter(name="pv_userId", mode = ParameterMode.IN, type = Integer.class),
         }),
 })
 public class BatchStatus {
