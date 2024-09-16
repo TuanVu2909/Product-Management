@@ -46,7 +46,7 @@ public class LoanRegistration {
         private String chassisNumber;
     
         @Column(name = "VEHICLEPRICE")
-        private int vehiclePrice;
+        private Long vehiclePrice;
     
         @Column(name = "LOANAMOUNT")
         private int loanAmount;
