@@ -57,7 +57,7 @@ import java.sql.Date;
                                 @StoredProcedureParameter(name = "pv_registrationNumber", mode = ParameterMode.IN, type = String.class),
                                 @StoredProcedureParameter(name = "pv_engineNumber", mode = ParameterMode.IN, type = String.class),
                                 @StoredProcedureParameter(name = "pv_chassisNumber", mode = ParameterMode.IN, type = String.class),
-                                @StoredProcedureParameter(name = "pv_vehiclePrice", mode = ParameterMode.IN, type = int.class),
+                                @StoredProcedureParameter(name = "pv_vehiclePrice", mode = ParameterMode.IN, type = Long.class),
                                 @StoredProcedureParameter(name = "pv_loanAmount", mode = ParameterMode.IN, type = int.class),
                                 @StoredProcedureParameter(name = "pv_term", mode = ParameterMode.IN, type = int.class),
                                 @StoredProcedureParameter(name = "pv_status", mode = ParameterMode.IN, type = String.class),
