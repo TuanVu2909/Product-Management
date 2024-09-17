@@ -2,7 +2,7 @@ package com.technology.apigateway.service.impl;
 
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.BatchRequest;
-import com.technology.apigateway.database.entity.status.BatchStatus;
+import com.technology.apigateway.database.entity.BatchStatus;
 import com.technology.apigateway.database.repository.BatchStatusRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.BatchService;

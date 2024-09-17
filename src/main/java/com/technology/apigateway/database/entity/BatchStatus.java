@@ -1,4 +1,4 @@
-package com.technology.apigateway.database.entity.status;
+package com.technology.apigateway.database.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,8 +19,8 @@ import javax.persistence.StoredProcedureParameter;
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "BatchStatus.prc_runbatch", procedureName = "prc_runbatch", resultClasses = BatchStatus.class, parameters = {
             @StoredProcedureParameter(name="pv_refcursor", mode = ParameterMode.REF_CURSOR, type = Void.class),
-            @StoredProcedureParameter(name="pv_userId", mode = ParameterMode.IN, type = Integer.class),
-        }),
+            @StoredProcedureParameter(name="pv_userId", mode = ParameterMode.IN, type = int.class),
+        })
 })
 public class BatchStatus {
     @Id
