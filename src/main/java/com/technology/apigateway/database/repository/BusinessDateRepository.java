@@ -13,5 +13,4 @@ public interface BusinessDateRepository extends CrudRepository<BusinessDate, Lon
 
     @Query(value = "select * from businessdate where datetype = :currentDate", nativeQuery = true)
     List<BusinessDate> getBusinessDate(@Param("currentDate") String currentDate);
-
 }
