@@ -19,7 +19,7 @@ public class BatchServiceImpl implements BatchService {
     public BatchStatus runBatch(BatchRequest batchRequest) {
         BatchStatus batchStatus;
         try {
-            batchStatus = batchStatusRepository.runBatch(batchRequest.getUserId());
+            batchStatus = batchStatusRepository.runBatch(73);
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.UNKNOWN_ERROR, e.getMessage());
         }
