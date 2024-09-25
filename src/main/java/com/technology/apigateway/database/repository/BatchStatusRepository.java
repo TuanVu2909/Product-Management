@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository("batchStatusRepository")
-public interface BatchStatusRepository extends CrudRepository<BatchStatus, Integer> {
+public interface BatchStatusRepository extends CrudRepository<BatchStatus, String> {
 
-    @Procedure("prc_runbatch")
+    @Procedure("BatchStatus.prc_runbatch")
     BatchStatus runBatch(@Param("pv_userId") Integer userId);
 }
