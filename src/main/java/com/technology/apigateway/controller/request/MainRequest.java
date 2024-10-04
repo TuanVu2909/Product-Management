@@ -53,14 +53,9 @@ public class MainRequest {
     private String nameCompany;
     private String ethics;
     private String descriptionWork;
-    // customer care request
     private int custId;
     private String careId;
     private String careType;
-    // private String createdDateCustomerCareRequest; dùng createDate ở trên
-    // customer
-    // loan registration request
-    // private Integer custIdLoanRegistration; chỉ sử dụng một custId
     private String vehicleType;
     private Integer vehicleId;
     private String vehicleNumber;

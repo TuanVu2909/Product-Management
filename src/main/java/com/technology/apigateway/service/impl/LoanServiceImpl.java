@@ -10,6 +10,8 @@ import com.technology.apigateway.controller.request.AddressRequest;
 import com.technology.apigateway.controller.request.LoanRequest;
 import com.technology.apigateway.controller.request.MainRequest;
 import com.technology.apigateway.controller.request.OperatorLoanRequest;
+import com.technology.apigateway.controller.request.payment.ApprovePrePaymentRequest;
+import com.technology.apigateway.controller.request.payment.PrePaymentRequest;
 import com.technology.apigateway.controller.request.references.ReferenceRequest;
 import com.technology.apigateway.database.entity.AdminUser;
 import com.technology.apigateway.database.entity.Customer;
@@ -463,12 +465,25 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public LoanStatus prePayment(LoanRequest loanRequest) {
+    public LoanStatus prePayment(PrePaymentRequest request) {
         LoanStatus loanStatus;
         try {
             loanStatus = loanStatusRepository.prePayment(
-                    loanRequest.getId(),
-                    loanRequest.getCreatedUser());
+                    request.getLoanId(),
+                    request.getUserId());
+        } catch (Exception e) {
+            throw new BusinessException(ErrorCode.UNKNOWN_ERROR, e.getMessage());
+        }
+        return loanStatus;
+    }
+
+    @Override
+    public LoanStatus approvePrePayment(ApprovePrePaymentRequest request) {
+        LoanStatus loanStatus;
+        try {
+            loanStatus = loanStatusRepository.approvePrePayment(
+                    request.getLoanId(),
+                    request.getApproveUserId());
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.UNKNOWN_ERROR, e.getMessage());
         }

@@ -8,7 +8,4 @@ public interface FunctionService {
 
     List<FunctionRequest> getAllFunction();
 
-    //FunctionRequest getFunctionByUserId(String userId);
-
-
 }

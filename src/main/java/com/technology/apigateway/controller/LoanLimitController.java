@@ -3,6 +3,8 @@ package com.technology.apigateway.controller;
 import com.technology.apigateway.controller.request.LoanLimitRequest;
 import com.technology.apigateway.controller.request.LoanRequest;
 import com.technology.apigateway.controller.request.OperatorLoanRequest;
+import com.technology.apigateway.controller.request.payment.ApprovePrePaymentRequest;
+import com.technology.apigateway.controller.request.payment.PrePaymentRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.service.LoanLimitService;
 import com.technology.apigateway.service.LoanService;
@@ -19,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
@@ -59,6 +60,9 @@ public class LoanLimitController extends BaseResponse {
         return response(toResult(loanLimitService.getListLoanLimit(loanLimitRequest)));
     }
 
+    /*
+     * Lấy ra tất cả danh sách khoản vay
+     * */
     @PostMapping("get-loan-list")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getLoanList(HttpServletRequest httpServletRequest,
@@ -66,11 +70,22 @@ public class LoanLimitController extends BaseResponse {
         return response(toResult(loanService.getLoanList(loanRequest)));
     }
 
+    /*
+     * Tạo lệnh tất toán trước hạn
+     * */
     @PostMapping("pre-payment")
     @Transactional(readOnly = true)
-    public ResponseEntity<?> prePayment(HttpServletRequest httpServletRequest,
-                                        @RequestBody LoanRequest loanRequest) {
-        return response(toResult(loanService.prePayment(loanRequest)));
+    public ResponseEntity<?> prePayment(@RequestBody PrePaymentRequest request) {
+        return response(toResult(loanService.prePayment(request)));
+    }
+
+    /*
+     * Duyệt lệnh tất toán trước hạn
+     * */
+    @PostMapping("approve-pre-payment")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> approvePrePayment(@RequestBody ApprovePrePaymentRequest request) {
+        return response(toResult(loanService.approvePrePayment(request)));
     }
 
     @PostMapping("operator-loan")

@@ -1,6 +1,3 @@
-/***************************************************************************
- * Copyright 2018 by VIETIS - All rights reserved.                *    
- **************************************************************************/
 package com.technology.apigateway.constant;
 
 import org.slf4j.Logger;

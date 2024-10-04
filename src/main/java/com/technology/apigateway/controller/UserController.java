@@ -29,7 +29,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
@@ -128,7 +127,6 @@ public class UserController extends BaseResponse<AuthService> {
         }
     }
 
-    // @Scheduled(initialDelay = 1 * 60, fixedDelay = 1 * 3 * 100)
     public void auto() {
         try {
             System.out.println("~~~~> : " + System.currentTimeMillis());

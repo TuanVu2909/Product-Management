@@ -22,6 +22,9 @@ public class BusinessDateController extends BaseResponse {
 
     BusinessDateService businessDateService;
 
+    /*
+    * Hiển thị ngày batch hiện tại trong hệ thống
+    * */
     @PostMapping("get-business-date")
     public ResponseEntity<?> getBusinessDate(HttpServletRequest httpServletRequest) {
         return response(toResult(businessDateService.getBusinessDates()));

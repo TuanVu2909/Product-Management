@@ -30,7 +30,6 @@ public class CustomResponseBodyAdviceAdapter implements ResponseBodyAdvice<Objec
             loggingService.logResponse(((ServletServerHttpRequest) serverHttpRequest).getServletRequest(),
                     ((ServletServerHttpResponse) serverHttpResponse).getServletResponse(), o);
         }
-        
         return o;
     }
 }

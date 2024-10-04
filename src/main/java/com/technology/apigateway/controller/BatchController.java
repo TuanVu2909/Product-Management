@@ -28,6 +28,4 @@ public class BatchController extends BaseResponse {
     public ResponseEntity<?> runBatch(HttpServletRequest request, @RequestBody BatchRequest batchRequest) {
         return response(toResult(batchService.runBatch(batchRequest)));
     }
-
-
 }
