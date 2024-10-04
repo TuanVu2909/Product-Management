@@ -4,15 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/***********************************************************************
- * 
- * @package：com.lendbiz.p2p.api.exception，@class-name：BusinessException.java
- * 
- * @copyright Copyright: 2021-2022
- * @creator Hoang Thanh Tu <br/>
- * @create-time Apr 9, 2021 10:56:57 AM
- *
- ***********************************************************************/
+
 @Setter
 @Getter
 @NoArgsConstructor

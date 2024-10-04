@@ -33,15 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        // Get AuthenticationManager bean
         return super.authenticationManagerBean();
     }
-
-    // @Bean
-    // public PasswordEncoder passwordEncoder() {
-    // // Password encoder, để Spring Security sử dụng mã hóa mật khẩu người dùng
-    // return new BCryptPasswordEncoder();
-    // }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -79,18 +72,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static String getMd5(String input) {
         try {
-            // Static getInstance method is called with hashing SHA
             MessageDigest md = MessageDigest.getInstance("MD5");
-
-            // digest() method called
-            // to calculate message digest of an input
-            // and return array of byte
             byte[] messageDigest = md.digest(input.getBytes());
-
-            // Convert byte array into signum representation
             BigInteger no = new BigInteger(1, messageDigest);
-
-            // Convert message digest into hex value
             String hashtext = no.toString(16);
 
             while (hashtext.length() < 32) {
@@ -98,10 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             }
 
             return hashtext;
-        }
-
-        // For specifying wrong message digest algorithms
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             System.out.println("Exception thrown"
                     + " for incorrect algorithm: " + e);
             return null;

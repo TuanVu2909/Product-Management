@@ -10,7 +10,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
@@ -27,7 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 public class LoanRegistrationController extends BaseResponse<LoanService> {
     LoanRegistrationService loanRegistrationService;
 
-    // lay chi tiet ho so vay
+    /*
+    * Get ra danh sách khoản vay theo điều kiện cụ thể
+    * */
     @PostMapping("get-loan-registration")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getLoanRegistration(HttpServletRequest httpServletRequest,

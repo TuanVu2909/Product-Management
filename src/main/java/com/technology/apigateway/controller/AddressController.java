@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
@@ -25,30 +24,45 @@ public class AddressController extends BaseResponse {
 
     AddressService addressService;
 
+    /*
+    * Lấy ra tất cả danh sách các huyện
+    * */
     @GetMapping("get-all-district")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllDistrict(HttpServletRequest httpServletRequest) {
         return response(toResult(addressService.getAllDistrict()));
     }
 
+    /*
+    * Lấy danh sách quận huyện theo mã tỉnh
+    * */
     @GetMapping("get-district-by-pid/{pid}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getDistrictByIdPid(HttpServletRequest httpServletRequest, @PathVariable int pid) {
         return response(toResult(addressService.getDistrictByPid(pid)));
     }
 
+    /*
+     * Lấy tất cả danh sách tỉnh
+     * */
     @GetMapping("get-all-province")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllProvince(HttpServletRequest httpServletRequest) {
         return response(toResult(addressService.getAllProvince()));
     }
 
+    /*
+     * Lấy tất cả danh sách xã phường
+     * */
     @GetMapping("get-all-ward")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllWard(HttpServletRequest httpServletRequest) {
         return response(toResult(addressService.getAllWard()));
     }
 
+    /*
+     * Lấy danh sách xã phường theo quận huyện
+     * */
     @GetMapping("get-ward-by-did/{did}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllWard(HttpServletRequest httpServletRequest, @PathVariable int did) {

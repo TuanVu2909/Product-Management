@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@CrossOrigin(origins = "https://apigateway.lendbiz.vn", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 @Log4j2
@@ -36,7 +35,6 @@ public class GroupFunctionController extends BaseResponse {
     }
 
     @GetMapping("get-all-group-function")
-    // @Transactional(readOnly = true)
     public ResponseEntity<?> getAllGroupFunction(HttpServletRequest httpServletRequest) {
         return response(toResult(DataLoader.groupFunction));
     }

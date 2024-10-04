@@ -10,8 +10,6 @@ public interface LoanRegistrationService {
 
     List<ListLoanRegistration> getLoanRegistration(LoanRegistrationRequest loanRegistrationRequest);
 
-    // List<LoanRegistrationRequest> getLoanRegistrationByCustId(int cust);
-
     List<ListLoanRegistration> getListLoanRegistration(LoanRegistrationRequest request);
 
     LoanRegistrationStatus createLoanRegistration(LoanRegistrationRequest loanRegistrationRequest);
