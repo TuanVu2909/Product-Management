@@ -24,6 +24,10 @@ public class BatchController extends BaseResponse {
 
     BatchService batchService;
 
+    /*
+    * Chạy batch
+    * */
+
     @PostMapping("run-batch")
     public ResponseEntity<?> runBatch(HttpServletRequest request, @RequestBody BatchRequest batchRequest) {
         return response(toResult(batchService.runBatch(batchRequest)));

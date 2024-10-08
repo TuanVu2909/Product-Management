@@ -24,12 +24,18 @@ public class AllCodeController extends BaseResponse {
 
     AllCodeService allCodeService;
 
+    /*
+    * Lấy ra tất cả dữ liệu của bảng all-code
+    */
     @GetMapping("get-all-allCode")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllAllCode(HttpServletRequest httpServletRequest) {
         return response(toResult(allCodeService.getAllAllCode()));
     }
 
+    /*
+     * Lấy ra dữ liệu của bảng all-code theo type
+     */
     @GetMapping("get-all-code-by-type/{type}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllCodeByType(HttpServletRequest httpServletRequest, @PathVariable String type) {

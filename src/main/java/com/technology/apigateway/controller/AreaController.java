@@ -25,6 +25,9 @@ public class AreaController extends BaseResponse {
 
     RegionService regionService;
 
+    /*
+     * Lấy ra tất cả khu vực
+     */
     @GetMapping("get-all-area")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllArea(HttpServletRequest httpServletRequest) {
