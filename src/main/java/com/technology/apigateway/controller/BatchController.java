@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class BatchController extends BaseResponse {
     * */
 
     @PostMapping("run-batch")
+    @Transactional(readOnly = true)
     public ResponseEntity<?> runBatch(HttpServletRequest request, @RequestBody BatchRequest batchRequest) {
         return response(toResult(batchService.runBatch(batchRequest)));
     }

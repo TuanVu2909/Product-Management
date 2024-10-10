@@ -2,10 +2,11 @@ package com.technology.apigateway.controller.request;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-public class BatchRequest {
-
-    public String userId;
+@ToString
+public class LoanDetailRequest {
+    private Integer id;
 }

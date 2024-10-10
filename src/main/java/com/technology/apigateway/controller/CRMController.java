@@ -30,6 +30,8 @@ public class CRMController extends BaseResponse<AuthService> {
 
     JwtTokenProvider tokenProvider;
 
+
+    /*Gen token khi đăng nhập username và pwd*/
     @PostMapping("token")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -37,11 +39,7 @@ public class CRMController extends BaseResponse<AuthService> {
                         loginRequest.getUsername(),
                         loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         LoginResponse jwt = tokenProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
-
-        System.out.println("test jenkins!11");
-
         return response(toResult(jwt));
     }
 

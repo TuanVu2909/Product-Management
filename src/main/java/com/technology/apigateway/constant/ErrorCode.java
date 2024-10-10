@@ -167,4 +167,12 @@ public class ErrorCode {
     public static final String ACCOUNT_NOT_UPDATED = "201";
     public static final String ACCOUNT_NOT_UPDATED_DESCRIPTION = "Tài khoản chưa phân nhánh vào đâu!";
 
+    private final String code;
+    private final String description;
+
+    ErrorCode(String code, String description) {
+        this.code = code;
+        this.description = description;
+    }
+
 }

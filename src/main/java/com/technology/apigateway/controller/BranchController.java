@@ -23,6 +23,7 @@ public class BranchController extends BaseResponse {
 
     BranchService branchService;
 
+    /* Lấy tất cả các chi nhánh */
     @GetMapping("get-all-branch")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllBranch(HttpServletRequest httpServletRequest) {

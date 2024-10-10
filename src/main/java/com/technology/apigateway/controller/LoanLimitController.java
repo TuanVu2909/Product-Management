@@ -1,11 +1,13 @@
 package com.technology.apigateway.controller;
 
+import com.technology.apigateway.controller.request.LoanDetailRequest;
 import com.technology.apigateway.controller.request.LoanLimitRequest;
 import com.technology.apigateway.controller.request.LoanRequest;
 import com.technology.apigateway.controller.request.OperatorLoanRequest;
 import com.technology.apigateway.controller.request.payment.ApprovePrePaymentRequest;
 import com.technology.apigateway.controller.request.payment.PrePaymentRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
+import com.technology.apigateway.service.LoanDetailService;
 import com.technology.apigateway.service.LoanLimitService;
 import com.technology.apigateway.service.LoanService;
 import lombok.AccessLevel;
@@ -32,6 +34,8 @@ public class LoanLimitController extends BaseResponse {
 
     LoanService loanService;
 
+    LoanDetailService loanDetailService;
+
     @PostMapping("create-loan-limit")
     @Transactional(readOnly = true)
     public ResponseEntity<?> createLoanLimit(HttpServletRequest httpServletRequest,
@@ -44,6 +48,13 @@ public class LoanLimitController extends BaseResponse {
     public ResponseEntity<?> createLoan(HttpServletRequest httpServletRequest,
                                         @RequestBody LoanRequest loanRequest) {
         return response(toResult(loanService.createLoan(loanRequest)));
+    }
+
+    @PostMapping("get-loan-by-Id")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getLoanById(HttpServletRequest httpServletRequest,
+                                         @RequestBody LoanDetailRequest request) {
+        return response(toResult(loanDetailService.getLoanById(request)));
     }
 
     @PostMapping("update-loan-status")

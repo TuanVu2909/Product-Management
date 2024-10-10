@@ -48,12 +48,14 @@ public class CustomerController extends BaseResponse {
 
     ChangePasswordRepository passwordRepository;
 
+    /*Lấy ra tất cả các khách hàng*/
     @GetMapping("get-all-customer")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllCustomer(HttpServletRequest httpServletRequest) {
         return response(toResult(customerService.getAllCustomer()));
     }
 
+    /*Lấy ra các khách hàng theo điều kiện cụ thể*/
     @PostMapping("get-customer-where")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getCustomerWhere(HttpServletRequest httpServletRequest,
@@ -61,6 +63,7 @@ public class CustomerController extends BaseResponse {
         return response(toResult(customerService.getCustomerWhere(request)));
     }
 
+    /*Lấy ra thu nhập của khách hàng*/
     @PostMapping("get-customer-incomes")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getCustomerIncomes(HttpServletRequest httpServletRequest,
@@ -75,6 +78,7 @@ public class CustomerController extends BaseResponse {
         return response(toResult(customerService.getCustomerByIdAndIncomeType(request)));
     }
 
+    /*Lấy ra người bảo lãnh của khách hàng*/
     @PostMapping("get-customer-guardians")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getCustomerGuardians(HttpServletRequest httpServletRequest,
@@ -82,6 +86,7 @@ public class CustomerController extends BaseResponse {
         return response(toResult(customerService.getGuardiansByUserId(request)));
     }
 
+    /*Lấy ra người tham chiếu của khách hàng*/
     @PostMapping("get-customer-references")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getCustomerReferences(HttpServletRequest httpServletRequest,
@@ -138,20 +143,17 @@ public class CustomerController extends BaseResponse {
     @GetMapping("get-all-paytypeconf")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getPayTypeByLoanType(HttpServletRequest httpServletRequest) {
-
         return response(toResult(payTypeRepository.findAll()));
     }
-
 
     @PostMapping("add-comment")
     @Transactional(readOnly = true)
     public ResponseEntity<?> addComment(HttpServletRequest httpServletRequest,
                                         @RequestBody AddCommentRequest request) {
-
-        return response(toResult(
-                addCommentRepository.addComment(request.getUserId(), request.getLoanRegId(), request.getComment())));
+        return response(toResult(addCommentRepository.addComment(request.getUserId(), request.getLoanRegId(), request.getComment())));
     }
 
+    /*Lấy ra comment theo Id*/
     @GetMapping("get-all-comment/{id}")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getComment(HttpServletRequest httpServletRequest, @PathVariable Integer id) {
@@ -166,26 +168,22 @@ public class CustomerController extends BaseResponse {
         return response(toResult(customerService.getListCustomerBalance()));
     }
 
-
     @PostMapping("change-password")
     @Transactional(readOnly = true)
     public ResponseEntity<?> changePassword(HttpServletRequest httpServletRequest,
                                             @RequestBody ChangePasswordRequest request) {
-
         ChangePassword res = passwordRepository.changePassword(request.getUserId(), request.getCurrentPassword(),
                 request.getNewPassword(), request.getConfirmNewPassword());
 
         if (!res.getStatus().equals("01")) {
             throw new BusinessException(Constants.ERROR, res.getDescription());
         }
-
         return response(toResult(res));
     }
 
     @GetMapping("get-list-transaction")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getListTransaction(HttpServletRequest httpServletRequest) {
-
         return response(toResult(customerService.getListTransaction()));
     }
 

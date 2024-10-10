@@ -23,43 +23,44 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LoanRegistrationController extends BaseResponse<LoanService> {
+
     LoanRegistrationService loanRegistrationService;
 
     /*
-    * Get ra danh sách khoản vay theo điều kiện cụ thể
-    * */
+     * Get ra danh sách hồ sơ vay theo điều kiện cụ thể
+     * */
     @PostMapping("get-loan-registration")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getLoanRegistration(HttpServletRequest httpServletRequest,
-            @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
+                                                 @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
         return response(toResult(loanRegistrationService.getLoanRegistration(loanRegistrationRequest)));
     }
 
     @PostMapping("get-list-loan-registration")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getAllLoanRegistrationWhere(HttpServletRequest httpServletRequest,
-            @RequestBody LoanRegistrationRequest request) {
+                                                         @RequestBody LoanRegistrationRequest request) {
         return response(toResult(loanRegistrationService.getListLoanRegistration(request)));
     }
 
     @PostMapping("create-loan-registration")
     @Transactional(readOnly = true)
     public ResponseEntity<?> createLoanRegistration(HttpServletRequest httpServletRequest,
-            @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
+                                                    @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
         return response(toResult(loanRegistrationService.createLoanRegistration(loanRegistrationRequest)));
     }
 
     @PostMapping("update-loan-registration")
     @Transactional(readOnly = true)
     public ResponseEntity<?> updateLoanRegistration(HttpServletRequest httpServletRequest,
-            @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
+                                                    @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
         return response(toResult(loanRegistrationService.updateLoanRegistration(loanRegistrationRequest)));
     }
 
     @PostMapping("update-loanreg-status")
     @Transactional(readOnly = true)
     public ResponseEntity<?> updateLoanRegStatus(HttpServletRequest httpServletRequest,
-            @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
+                                                 @RequestBody LoanRegistrationRequest loanRegistrationRequest) {
         return response(toResult(loanRegistrationService.updateLoanRegistrationStatus(loanRegistrationRequest)));
     }
 
