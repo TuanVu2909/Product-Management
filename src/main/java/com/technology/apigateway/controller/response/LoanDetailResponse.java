@@ -62,7 +62,7 @@ public class LoanDetailResponse {
     private Double feeovd;
 
     @Column(name = "CUSTID")
-    private Double custid;
+    private Integer custid;
 
     @Column(name = "FULLNAME")
     private String fullname;
