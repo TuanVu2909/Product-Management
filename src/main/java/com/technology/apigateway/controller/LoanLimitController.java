@@ -49,7 +49,7 @@ public class LoanLimitController extends BaseResponse {
                                         @RequestBody LoanRequest loanRequest) {
         return response(toResult(loanService.createLoan(loanRequest)));
     }
-
+    /* Lấy khoản vay theo Id */
     @PostMapping("get-loan-by-Id")
     @Transactional(readOnly = true)
     public ResponseEntity<?> getLoanById(HttpServletRequest httpServletRequest,
