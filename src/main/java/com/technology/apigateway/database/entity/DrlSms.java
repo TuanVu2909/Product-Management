@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -26,7 +23,7 @@ public class DrlSms {
     private Long deliveredts;
 
     @Column(name = "status")
-    private Integer status;
+    private int status;
 
     @Column(name = "userapi")
     private String user;
@@ -41,13 +38,13 @@ public class DrlSms {
     private String text;
 
     @Column(name = "errorcode")
-    private Integer errorcode;
+    private int errorcode;
 
     @Column(name = "carrier")
     private String carrier;
 
     @Column(name = "mnp")
-    private Integer mnp;
+    private int mnp;
 
 }
 

@@ -1,5 +1,6 @@
 package com.technology.apigateway.controller;
 
+import com.technology.apigateway.controller.response.BaseResponse;
 import com.technology.apigateway.database.entity.DrlSms;
 import com.technology.apigateway.models.Dto.DrlSmsDto;
 import com.technology.apigateway.service.SMSSendingService;
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("api/sms")
 @Log4j2
 @AllArgsConstructor
-public class DRLDataController {
+public class DRLDataController extends BaseResponse {
     @Autowired
     private SMSSendingService smsSendingService;
 
@@ -66,6 +69,11 @@ public class DRLDataController {
         smsSendingService.saveDrlSms(smsEntity);
 
         return ResponseEntity.ok("SMS data saved successfully");
+    }
+
+    @GetMapping("/get-drlData")
+    public ResponseEntity<?> getFindSMSByMobile(HttpServletRequest httpServletRequest) {
+        return response(toResult(smsSendingService.findSmsById()));
     }
 
 }

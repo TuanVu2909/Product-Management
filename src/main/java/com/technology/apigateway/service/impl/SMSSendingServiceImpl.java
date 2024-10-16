@@ -117,7 +117,7 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                 for (SMSEntity sms : smsEntityList) {
                     String toMobile = sms.getToMobile();
                     String text = sms.getText();
-                    String id = sms.getId();
+                    int id = sms.getId();
                     if (toMobile != null && text != null) {
                         SMSSendingRequest request = new SMSSendingRequest();
                         request.setTo(toMobile);
@@ -133,11 +133,18 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                             if (drlSmsList != null){
                                 for (DrlSms drlsms : drlSmsList ){
                                     String smsId = drlsms.getSmsid();
-                                    if (id == smsId){
+                                    int idDrl = Integer.parseInt(smsId);
+                                    int statusDrl = drlsms.getStatus();
+                                    if (id == idDrl && statusDrl == 1){
                                         sms.setStatus(2);
                                         smsRepository.save(sms);
                                         logger.info("SMS sent successfully to " + toMobile);
-                                    }else {
+                                    }else if (id == idDrl && statusDrl == 0){
+                                        sms.setStatus(-1);
+                                        smsRepository.save(sms);
+                                        logger.info("SMS sent successfully to " + toMobile);
+                                    }
+                                    else {
                                         logger.error("Failed to send SMS to " + toMobile);
                                     }
                                 }

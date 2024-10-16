@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface DrlSmsRepository extends JpaRepository<DrlSms,Long> {
-    @Query(value = "select * from drlsms where smsid  not in (select id from sms)", nativeQuery = true)
+    @Query(value = "SELECT * FROM drlsms WHERE TRUNC(TO_DATE('1970-01-01', 'YYYY-MM-DD') + NUMTODSINTERVAL(receivedts, 'SECOND')) = TRUNC(SYSDATE)", nativeQuery = true)
     List<DrlSms> findDrlSmsById();
 }

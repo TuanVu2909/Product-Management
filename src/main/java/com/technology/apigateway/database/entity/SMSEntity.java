@@ -22,7 +22,7 @@ import javax.persistence.*;
 public class SMSEntity {
     @Id
     @Column(name = "ID")
-    private String id;
+    private int id;
 
     @Column(name = "TOMOBILE")
     private String toMobile;
