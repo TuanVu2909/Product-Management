@@ -14,7 +14,5 @@ public interface SMSSendingService {
 
     List<SMSEntity> getLogs();
 
-    DrlSms saveDrlSms(DrlSms drlSms);
-
     List<DrlSms> findSmsById();
 }

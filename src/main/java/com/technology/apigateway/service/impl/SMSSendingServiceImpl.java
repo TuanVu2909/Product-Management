@@ -10,16 +10,13 @@ import com.technology.apigateway.database.repository.SmsRepository;
 import com.technology.apigateway.service.SMSSendingService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
+
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Scanner;
@@ -167,11 +164,6 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
     }
 
     @Override
-    public DrlSms saveDrlSms(DrlSms drlSms){
-        return drlSmsRepository.save(drlSms);
-    }
-
-    @Override
     public List<DrlSms> findSmsById(){
         List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
         if (drlSmsList != null){
@@ -181,33 +173,4 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
         }
     }
 
-
-//    public ResponseEntity<?> callSMSSendingAPI(SMSSendingRequest sendingRequest) {
-//        String response = sendSMSSendingAPI("FINY",sendingRequest.getTo(), sendingRequest.getText());
-//        if (!response.isEmpty()) {
-//            return response(toResult(response));
-//        } else {
-//            return response(toResult("Error while sending SMS"));
-//        }
-//    }
-
-
-//    private final RestTemplate restTemplate;
-
-//    public SMSSendingServiceImpl(RestTemplateBuilder restTemplateBuilder) {
-//        this.restTemplate = restTemplateBuilder.basicAuthentication(Constants.SOUTH_TELECOM_SMS_API_USER,
-//                Constants.SOUTH_TELECOM_SMS_API_PASSWORD).build();
-//    }
-
-
-//    public Object callSMSSendingAPI(SMSSendingRequest request) {
-//
-//        try {
-//            String uri = Constants.SOUTH_TELECOM_SMS_API_URI_1;
-//            return restTemplate.postForObject(uri, request, Object.class);
-//        } catch (Exception ignored) {
-//            String uri = Constants.SOUTH_TELECOM_SMS_API_URI_2;
-//            return restTemplate.postForObject(uri, request, Object.class);
-//        }
-//    }
 }
