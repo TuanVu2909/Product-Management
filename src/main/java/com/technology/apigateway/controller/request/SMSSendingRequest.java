@@ -17,9 +17,9 @@ public class SMSSendingRequest {
     @NotBlank
     private String text;
 
-    private String unicode;
+    private Integer unicode = 0;
 
-    private Integer dlr = 0;
+    private Integer dlr = 1;
 
     private String smsId;
 

@@ -54,9 +54,12 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                 con.setRequestMethod("POST");
 
                 JSONObject jsonObject = new JSONObject();
+                jsonObject.put("smsid", sendingRequest.getSmsId());
                 jsonObject.put("from", "FINY");
                 jsonObject.put("to", sendingRequest.getTo());
                 jsonObject.put("text", sendingRequest.getText());
+                jsonObject.put("unicode", sendingRequest.getUnicode());
+                jsonObject.put("dlr", sendingRequest.getDlr());
 
                 logger.info("strJsonBody:\n" + jsonObject.toString());
 
@@ -115,8 +118,10 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                     String toMobile = sms.getToMobile();
                     String text = sms.getText();
                     int id = sms.getId();
+                    String smsid = Integer.toString(id);
                     if (toMobile != null && text != null) {
                         SMSSendingRequest request = new SMSSendingRequest();
+                        request.setSmsId(smsid);
                         request.setTo(toMobile);
                         request.setText(text);
                         String response = callSMSSendingAPI(request);
