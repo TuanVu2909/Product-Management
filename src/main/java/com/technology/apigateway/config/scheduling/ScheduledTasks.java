@@ -12,20 +12,9 @@ public class ScheduledTasks {
     private SMSSendingServiceImpl smsSendingService;
 
 
-//    @Scheduled(cron = "0 45 7 * * ?")
-//    public void scheduledSendSms() {
-//        smsSendingService.getFindSMSByMobile();
-//    }
-//        @Scheduled(cron = "0 45 7 * * ?")
-//        public void scheduledSendSms() {
-//        smsSendingService.findSmsById();
-//        }
+    @Scheduled(cron = "0 0 8 * * ?")
+    public void scheduledSendSms() {
+        smsSendingService.getFindSMSByMobile();
+    }
 
-
-//    @Scheduled(initialDelay = 60L, fixedDelay = 600000L)
-//    public void sendSMSAPI() throws BusinessException {
-//        this.logger.info("Check Auto Deposit");
-//
-//        smsSendingService.callSMSSendingAPI();
-//    }
 }

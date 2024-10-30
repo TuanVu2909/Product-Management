@@ -117,9 +117,10 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                 for (SMSEntity sms : smsEntityList) {
                     String toMobile = sms.getToMobile();
                     String text = sms.getText();
+                    int status = sms.getStatus();
                     int id = sms.getId();
                     String smsid = Integer.toString(id);
-                    if (toMobile != null && text != null) {
+                    if (toMobile != null && text != null && status == 0) {
                         SMSSendingRequest request = new SMSSendingRequest();
                         request.setSmsId(smsid);
                         request.setTo(toMobile);
@@ -130,7 +131,7 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                             sms.setStatus(1);
                             smsRepository.save(sms);
                             logger.info("SMS sent successfully to " + toMobile);
-                            List<DrlSms> drlSmsList = findSmsById();
+                            List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
 
                             if (drlSmsList != null){
                                 for (DrlSms drlsms : drlSmsList ){
@@ -168,14 +169,14 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
         return smsEntityList;
     }
 
-    @Override
-    public List<DrlSms> findSmsById(){
-        List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
-        if (drlSmsList != null){
-            return drlSmsList;
-        }else {
-            return null;
-        }
-    }
+//    @Override
+//    public List<DrlSms> findSmsById(){
+//        List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
+//        if (drlSmsList != null){
+//            return drlSmsList;
+//        }else {
+//            return null;
+//        }
+//    }
 
 }
