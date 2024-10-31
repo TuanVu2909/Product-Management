@@ -21,4 +21,8 @@ public class ScheduledTasks {
         smsSendingService.getFindSMSByMobile();
     }
 
+    @Scheduled(cron = "0 5 8 * * ?")
+    public void scheduledCallSmsWebHook() {
+        smsSendingService.callSmsByWebHook();
+    }
 }

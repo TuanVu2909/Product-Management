@@ -14,5 +14,5 @@ public interface SMSSendingService {
 
     List<SMSEntity> getLogs();
 
-//    List<DrlSms> findSmsById();
+    List<DrlSms> callSmsByWebHook();
 }
