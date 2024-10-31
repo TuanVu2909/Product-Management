@@ -117,10 +117,9 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                 for (SMSEntity sms : smsEntityList) {
                     String toMobile = sms.getToMobile();
                     String text = sms.getText();
-                    int status = sms.getStatus();
                     int id = sms.getId();
                     String smsid = Integer.toString(id);
-                    if (toMobile != null && text != null && status == 0) {
+                    if (toMobile != null && text != null) {
                         SMSSendingRequest request = new SMSSendingRequest();
                         request.setSmsId(smsid);
                         request.setTo(toMobile);
@@ -131,27 +130,7 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
                             sms.setStatus(1);
                             smsRepository.save(sms);
                             logger.info("SMS sent successfully to " + toMobile);
-                            List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
 
-                            if (drlSmsList != null){
-                                for (DrlSms drlsms : drlSmsList ){
-                                    String smsId = drlsms.getSmsid();
-                                    int idDrl = Integer.parseInt(smsId);
-                                    int statusDrl = drlsms.getStatus();
-                                    if (id == idDrl && statusDrl == 1){
-                                        sms.setStatus(2);
-                                        smsRepository.save(sms);
-                                        logger.info("SMS sent successfully to " + toMobile);
-                                    }else if (id == idDrl && statusDrl == 0){
-                                        sms.setStatus(-1);
-                                        smsRepository.save(sms);
-                                        logger.info("SMS sent successfully to " + toMobile);
-                                    }
-                                    else {
-                                        logger.error("Failed to send SMS to " + toMobile);
-                                    }
-                                }
-                            }
                         } else {
                             logger.error("Failed to send SMS to " + toMobile);
                         }
@@ -169,14 +148,54 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
         return smsEntityList;
     }
 
-//    @Override
-//    public List<DrlSms> findSmsById(){
-//        List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
-//        if (drlSmsList != null){
-//            return drlSmsList;
-//        }else {
-//            return null;
-//        }
-//    }
+    @Override
+    public List<DrlSms> callSmsByWebHook() {
+        List<SMSEntity> smsEntityList = null;
+        try {
+            smsEntityList = smsRepository.finSmsByStatus();
+
+            if (smsEntityList != null) {
+                for (SMSEntity sms : smsEntityList) {
+                    String toMobile = sms.getToMobile();
+                    int id = sms.getId();
+                    List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
+
+                    if (drlSmsList != null) {
+                        for (DrlSms drlsms : drlSmsList) {
+                            if (drlsms != null) {
+                                String smsId = drlsms.getSmsid();
+                                int idDrl = Integer.parseInt(smsId);
+                                int statusDrl = drlsms.getStatus();
+
+                                if (id == idDrl && statusDrl == 1) {
+                                    sms.setStatus(2);
+                                    smsRepository.save(sms);
+                                    logger.info("SMS sent successfully to " + toMobile);
+                                    break;
+                                } else if (id == idDrl && statusDrl == 0) {
+                                    sms.setStatus(-1);
+                                    smsRepository.save(sms);
+                                    logger.info("SMS failed to send to " + toMobile);
+                                    break;
+                                } else {
+                                    logger.error("Failed to send SMS to " + toMobile);
+                                }
+                            } else {
+                                logger.warn("Encountered null DrlSms object in drlSmsList.");
+                            }
+                        }
+                    }
+                }
+                return null;
+            } else {
+                logger.warn("No SMS records found.");
+                return null;
+            }
+        } catch (Exception e) {
+            logger.error("Error in findSmsById: " + e.getMessage());
+        }
+        return null;
+    }
+
 
 }

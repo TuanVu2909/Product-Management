@@ -36,8 +36,8 @@ public class SMSSendingController extends BaseResponse {
         return response(toResult(smsSendingService.getLogs()));
     }
 
-//    @GetMapping("/get-drlSms")
-//    public ResponseEntity<?> getDrlSMS(HttpServletRequest httpServletRequest) {
-//        return response(toResult(smsSendingService.findSmsById()));
-//    }
+    @GetMapping("/get-drlSms")
+    public ResponseEntity<?> getDrlSMS(HttpServletRequest httpServletRequest) {
+        return response(toResult(smsSendingService.callSmsByWebHook()));
+    }
 }
