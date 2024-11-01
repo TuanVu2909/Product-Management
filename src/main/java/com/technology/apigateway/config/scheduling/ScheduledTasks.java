@@ -1,8 +1,10 @@
 package com.technology.apigateway.config.scheduling;
 
+import com.technology.apigateway.service.SMSSendingService;
 import com.technology.apigateway.service.impl.SMSSendingServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,8 +14,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class ScheduledTasks {
     private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
 
-
-    private SMSSendingServiceImpl smsSendingService;
+    @Autowired
+    private SMSSendingService smsSendingService;
 
 
     @Scheduled(cron = "0 0 9 * * ?")
