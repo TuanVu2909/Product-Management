@@ -18,12 +18,12 @@ public class ScheduledTasks {
     private SMSSendingService smsSendingService;
 
 
-    @Scheduled(cron = "0 0 8 * * ?")
+    @Scheduled(cron = "0 15 8 * * ?")
     public void scheduledSendSms() {
         smsSendingService.getFindSMSByMobile();
     }
 
-    @Scheduled(cron = "0 5 8 * * ?")
+    @Scheduled(cron = "0 20 8 * * ?")
     public void scheduledCallSmsWebHook() {
         smsSendingService.callSmsByWebHook();
     }

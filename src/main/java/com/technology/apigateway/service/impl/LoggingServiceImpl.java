@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.technology.apigateway.kafka.producer.ProducerMessage;
+//import com.technology.apigateway.kafka.producer.ProducerMessage;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,8 +26,8 @@ import lombok.extern.log4j.Log4j2;
 @Component
 public class LoggingServiceImpl implements LoggingService {
 
-    @Autowired
-    private ProducerMessage producerMessage;
+//    @Autowired
+//    private ProducerMessage producerMessage;
 
     String requestId;
     String sessionId;
@@ -68,7 +68,7 @@ public class LoggingServiceImpl implements LoggingService {
 
             JSONObject jsonObjectLogs = new JSONObject(insertLogRequest);
 
-            producerMessage.sendLog(jsonObjectLogs.toString());
+//            producerMessage.sendLog(jsonObjectLogs.toString());
 
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -115,7 +115,7 @@ public class LoggingServiceImpl implements LoggingService {
                     String.valueOf(httpServletResponse.getStatus()), null,
                     bodyJson.toString(), errorCode);
             JSONObject jsonObjectLogs = new JSONObject(insertLogRequest);
-            producerMessage.sendLog(jsonObjectLogs.toString());
+//            producerMessage.sendLog(jsonObjectLogs.toString());
         } catch (Exception e) {
             log.error(e.getMessage());
 
