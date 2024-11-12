@@ -3,9 +3,7 @@ package com.technology.apigateway.service.impl;
 import com.technology.apigateway.constant.Constants;
 import com.technology.apigateway.controller.request.SMSSendingRequest;
 import com.technology.apigateway.controller.response.BaseResponse;
-import com.technology.apigateway.database.entity.DrlSms;
 import com.technology.apigateway.database.entity.SMSEntity;
-import com.technology.apigateway.database.repository.DrlSmsRepository;
 import com.technology.apigateway.database.repository.SmsRepository;
 import com.technology.apigateway.service.SMSSendingService;
 import org.json.JSONObject;
@@ -25,9 +23,6 @@ import java.util.Scanner;
 public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> implements SMSSendingService {
     @Autowired
     private SmsRepository smsRepository;
-
-    @Autowired
-    private DrlSmsRepository   drlSmsRepository;
 
     public String callSMSSendingAPI(SMSSendingRequest sendingRequest) {
         String jsonResponse = "";
@@ -148,54 +143,7 @@ public class SMSSendingServiceImpl extends BaseResponse<SMSSendingService> imple
         return smsEntityList;
     }
 
-    @Override
-    public List<DrlSms> callSmsByWebHook() {
-        List<SMSEntity> smsEntityList = null;
-        try {
-            smsEntityList = smsRepository.finSmsByStatus();
 
-            if (smsEntityList != null) {
-                for (SMSEntity sms : smsEntityList) {
-                    String toMobile = sms.getToMobile();
-                    int id = sms.getId();
-                    List<DrlSms> drlSmsList = drlSmsRepository.findDrlSmsById();
-
-                    if (drlSmsList != null) {
-                        for (DrlSms drlsms : drlSmsList) {
-                            if (drlsms != null) {
-                                String smsId = drlsms.getSmsid();
-                                int idDrl = Integer.parseInt(smsId);
-                                int statusDrl = drlsms.getStatus();
-
-                                if (id == idDrl && statusDrl == 1) {
-                                    sms.setStatus(2);
-                                    smsRepository.save(sms);
-                                    logger.info("SMS sent successfully to " + toMobile);
-                                    break;
-                                } else if (id == idDrl && statusDrl == 0) {
-                                    sms.setStatus(-1);
-                                    smsRepository.save(sms);
-                                    logger.info("SMS failed to send to " + toMobile);
-                                    break;
-                                } else {
-                                    logger.error("Failed to send SMS to " + toMobile);
-                                }
-                            } else {
-                                logger.warn("Encountered null DrlSms object in drlSmsList.");
-                            }
-                        }
-                    }
-                }
-                return null;
-            } else {
-                logger.warn("No SMS records found.");
-                return null;
-            }
-        } catch (Exception e) {
-            logger.error("Error in findSmsById: " + e.getMessage());
-        }
-        return null;
-    }
 
 
 }

@@ -149,27 +149,4 @@ public class UserController extends BaseResponse<AuthService> {
         }
     }
 
-    @PostMapping("/sale-overview/{userId}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> saleOverview(HttpServletRequest httpServletRequest, @PathVariable int userId) {
-        return response(toResult(adminUserService.saleOverview(userId)));
-    }
-
-    @PostMapping("/operator-overview/{userId}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> operatorOverview(HttpServletRequest httpServletRequest, @PathVariable int userId) {
-        return response(toResult(adminUserService.operatorOverview(userId)));
-    }
-
-    @PostMapping("operator-est-payment")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> operatorEstPayment(HttpServletRequest httpServletRequest, @RequestBody OperatorEstPaymentRequest operatorEstPaymentRequest) {
-        return response(toResult(adminUserService.operatorEstPayment(operatorEstPaymentRequest)));
-    }
-
-    @PostMapping("out-standing-loan")
-    @Transactional(readOnly = true)
-    public ResponseEntity<?> outStandingLoan(HttpServletRequest httpServletRequest, @RequestBody OutStandingLoanRequest outStandingLoanRequest){
-        return response(toResult(adminUserService.outStandingLoan(outStandingLoanRequest)));
-    }
 }

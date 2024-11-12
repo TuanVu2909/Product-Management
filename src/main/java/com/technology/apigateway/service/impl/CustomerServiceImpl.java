@@ -2,8 +2,6 @@ package com.technology.apigateway.service.impl;
 
 import com.technology.apigateway.constant.ErrorCode;
 import com.technology.apigateway.controller.request.CustomerRequest;
-import com.technology.apigateway.controller.request.GetCustomerRequest;
-import com.technology.apigateway.controller.request.GetIncomeCustomerByIdAndIncomeType;
 import com.technology.apigateway.database.entity.*;
 import com.technology.apigateway.database.entity.status.CustomerStatus;
 import com.technology.apigateway.database.repository.*;

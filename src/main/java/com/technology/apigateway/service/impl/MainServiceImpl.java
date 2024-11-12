@@ -1,19 +1,13 @@
 package com.technology.apigateway.service.impl;
 
-import com.technology.apigateway.controller.request.LoanRegistrationRequest;
 import com.technology.apigateway.controller.request.MainRequest;
 import com.technology.apigateway.controller.request.SimilarAssetsRequest;
 import com.technology.apigateway.controller.request.incomes.IncomesMonthRequest;
 import com.technology.apigateway.controller.request.incomes.IncomesRequest;
-import com.technology.apigateway.controller.request.references.ReferenceRequest;
-import com.technology.apigateway.database.entity.ListLoanRegistration;
 import com.technology.apigateway.database.entity.status.CustomerCareStatus;
 import com.technology.apigateway.database.entity.status.CustomerStatus;
-import com.technology.apigateway.database.entity.status.LoanRegistrationStatus;
 import com.technology.apigateway.database.repository.CustomerCareStatusRepository;
 import com.technology.apigateway.database.repository.CustomerStatusRepository;
-import com.technology.apigateway.database.repository.LoanRegistrationRepository;
-import com.technology.apigateway.database.repository.LoanRegistrationStatusRepository;
 import com.technology.apigateway.exception.BusinessException;
 import com.technology.apigateway.service.MainService;
 import lombok.extern.log4j.Log4j2;
@@ -31,12 +25,6 @@ public class MainServiceImpl implements MainService {
 
     @Autowired
     CustomerCareStatusRepository customerCareStatusRepository;
-
-    @Autowired
-    LoanRegistrationStatusRepository loanRegistrationStatusRepository;
-
-    @Autowired
-    LoanRegistrationRepository loanRegistrationRepository;
 
     @Override
     public String register(MainRequest mainRequest) {
@@ -134,75 +122,6 @@ public class MainServiceImpl implements MainService {
                 mainRequest.getCareType());
         if (customerCareStatus.getStatus().equals("00")) {
             throw new BusinessException("01", customerCareStatus.getDescription());
-        }
-        // Tạo hồ sơ vay
-        LoanRegistrationStatus loanRegistrationStatus = loanRegistrationStatusRepository.createLoanRegistration(
-                Integer.parseInt(custId),
-                mainRequest.getVehicleType(),
-                mainRequest.getVehicleId(),
-                mainRequest.getVehicleNumber(),
-                mainRequest.getRegistrationNumber(),
-                mainRequest.getEngineNumber(),
-                mainRequest.getChassisNumber(),
-                mainRequest.getVehiclePrice(),
-                mainRequest.getLoanAmount(),
-                mainRequest.getTerm(),
-                mainRequest.getSaleId(),
-                mainRequest.getSaleNote(),
-                mainRequest.getIncomeProveType(),
-                mainRequest.getTermType(),
-                mainRequest.getVehicleOwnerName(),
-                mainRequest.getVehicleColor(),
-                mainRequest.getAddressVehicleDocuments(),
-                mainRequest.getLoanType(),
-                mainRequest.getVehicleOrigin(),
-                mainRequest.getVehicleRegistrationIssued(),
-                mainRequest.getVehicleRegistrationDate(),
-                mainRequest.getPurposeUsingLoan(),
-                mainRequest.getVehicleBrand(),
-                mainRequest.getPayType(),
-                mainRequest.getFuel(),
-                mainRequest.getNumberPeopleAllow());
-
-        if (loanRegistrationStatus.getStatus().equals("0")) {
-            throw new BusinessException("01", loanRegistrationStatus.getDescription());
-        }
-
-        LoanRegistrationRequest loanRegistrationRequest = new LoanRegistrationRequest();
-        loanRegistrationRequest.setCustId(Integer.parseInt(custId));
-
-        // lấy ra danh sách hồ sơ vay của khách hàng
-        List<ListLoanRegistration> list = loanRegistrationRepository.getListLoanRegistration(
-                loanRegistrationRequest.getId(),
-                loanRegistrationRequest.getCustId(),
-                loanRegistrationRequest.getVehicleType(),
-                loanRegistrationRequest.getVehicleNumber(),
-                loanRegistrationRequest.getRegistrationNumber(),
-                loanRegistrationRequest.getEngineNumber(),
-                loanRegistrationRequest.getChassisNumber(),
-                loanRegistrationRequest.getTerm(),
-                loanRegistrationRequest.getStatus(),
-                loanRegistrationRequest.getSaleId(),
-                loanRegistrationRequest.getCoId(),
-                loanRegistrationRequest.getRegFromDate(),
-                loanRegistrationRequest.getRegToDate(),
-                loanRegistrationRequest.getTermType(),
-                loanRegistrationRequest.getVehicleOwnerName(),
-                loanRegistrationRequest.getVehicleColor(),
-                loanRegistrationRequest.getAddressVehicleDocuments(),
-                loanRegistrationRequest.getLoanType(),
-                loanRegistrationRequest.getVehicleOrigin(),
-                loanRegistrationRequest.getVehicleRegistrationIssued(),
-                loanRegistrationRequest.getVehicleRegistrationDate(),
-                loanRegistrationRequest.getPurposeUsingLoan(),
-                loanRegistrationRequest.getVehicleBrand(),
-                loanRegistrationRequest.getPayType()
-        );
-        // Tạo người tham chiếu theo mã hồ sơ vay vừa khởi tạo
-        for (ReferenceRequest ref : mainRequest.getReferences()) {
-            customerStatusRepository.createReference(Integer.parseInt(customerStatus.getDescription()),
-                    ref.getRefName(), ref.getMobile(),
-                    ref.getRelation(), ref.getJob(), list.get(0).getId());
         }
 
         int proffession = 1;

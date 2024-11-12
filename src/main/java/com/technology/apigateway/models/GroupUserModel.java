@@ -1,6 +1,5 @@
 package com.technology.apigateway.models;
 
-import com.technology.apigateway.database.entity.Branch;
 import lombok.Getter;
 import lombok.Setter;
 
